@@ -1,0 +1,31 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<Dialog
+		id="SwitchMode"
+		class="sapUiContentPadding"
+		contentWidth="500px"
+		title="Do you really want to switch the game mode?">
+		<content>
+			<Image
+				width="100%"
+				src="{
+					path: 'appView>/switchMode',
+					formatter: '.formatter.pictureUrl'
+				}"
+				class="creditsLogo sapUiTinyMarginBottom"/>
+		</content>
+		<beginButton>
+			<Button
+				type="Accept"
+				text="Leave"
+				press=".onLeave"/>
+		</beginButton>
+		<endButton>
+			<Button
+				type="Reject"
+				text="Stay"
+				press=".onStay"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

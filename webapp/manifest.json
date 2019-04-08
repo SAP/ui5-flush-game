@@ -1,0 +1,142 @@
+{
+	"_version": "1.12.0",
+	"sap.app": {
+		"id": "flush",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"resources": "resources.json"
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "flush.view.App",
+			"type": "XML",
+			"async": true,
+			"id": "app"
+		},
+		"resourceRoots": {
+			"flush": "./"
+		},
+		"dependencies": {
+			"minUI5Version": "1.60.0",
+			"libs": {
+				"sap.ui.core": {},
+				"sap.m": {},
+				"sap.ui.layout": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "flush.i18n.i18n"
+				}
+			}
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "flush.view",
+				"controlId": "app",
+				"controlAggregation": "pages",
+				"async": true
+			},
+			"routes": [
+				{
+					"pattern": "home",
+					"name": "home",
+					"target": "home"
+				},
+				{
+					"pattern": "multi",
+					"name": "multi",
+					"target": "multi"
+				},
+				{
+					"pattern": "Game/{level}/:difficulty:",
+					"name": "game",
+					"target": "game"
+				},
+				{
+					"pattern": "Outro",
+					"name": "outro",
+					"target": "outro"
+				},
+				{
+					"pattern": "",
+					"name": "intro",
+					"target": "intro"
+				}
+
+			],
+			"targets": {
+				"home": {
+					"viewId": "home",
+					"viewName": "Home"
+				},
+				"multi": {
+					"viewId": "multi",
+					"viewName": "Multi"
+				},
+				"intro": {
+					"viewId": "intro",
+					"viewName": "Intro"
+				},
+				"game": {
+					"viewId": "game",
+					"viewName": "Game"
+				},
+				"outro": {
+					"viewId": "outro",
+					"viewName": "Outro"
+				}
+			}
+		},
+		"resources": {
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			],
+			"js": [
+				{
+					"uri": "thirdparty/createjs.min.js"
+				},
+				{
+					"uri": "thirdparty/dom-to-image.min.js"
+				},
+				{
+					"uri": "thirdparty/Box2D.js"
+				},
+				{
+					"uri":"thirdparty/balls.js"
+				}
+			]
+		}
+	}
+}

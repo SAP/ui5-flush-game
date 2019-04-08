@@ -1,0 +1,74 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<Dialog
+		id="Credits"
+		class="sapUiContentPadding"
+		contentWidth="500px"
+		title="Credits">
+		<content>
+			<Image
+				width="50%"
+				src="{
+					path: 'appView>/flushLogo',
+					formatter: '.formatter.pictureUrl'
+				}"
+				class="creditsLogo sapUiTinyMarginBottom"/>
+			<Label width="100%" design="Bold" textAlign="Center" text="An innovation project combining OpenUI5 &amp; CreateJS"/>
+			<Label width="100%" textAlign="Center" text="Open Sourced by SAP in 2019"/>
+			<Link
+				href="https://github.com/sap/ui5-flush-game"
+				width="100%"
+				textAlign="Center"
+				text="view source code"
+				target="_blank"
+				class="sapUiSmallMarginBottom"/>
+			<Label
+				design="Bold"
+				width="100%"
+				textAlign="Center"
+				text="Created by"/>
+			<Label width="100%" textAlign="Center" text="Michael Graf"/>
+			<Label width="100%" textAlign="Center" text="Dominik Garrecht"/>
+			<Label width="100%" textAlign="Center" text="Clemens Maier"/>
+			<Label width="100%" textAlign="Center" text="Dietrich Mayer-Ullmann"/>
+			<Label width="100%" textAlign="Center" text="Adrian Moedebeck"/>
+			<Label width="100%" textAlign="Center" text="Ayham Tanbari" class="sapUiSmallMarginBottom"/>
+			<!-- sound -->
+			<Label width="100%" design="Bold" textAlign="Center" text="Level music"/>
+			<Label width="100%" textAlign="Center" text='"8Bit Introduction song" by'/>
+			<Link
+				href="http://tristanlohengrin.wixsite.com/studio"
+				width="100%"
+				textAlign="Center"
+				text="Tristan Lohengrin"
+				target="_blank"
+				class="sapUiSmallMarginBottom"/>
+			<Label width="100%" design="Bold" textAlign="Center" text="Sound Attributions"/>
+			<Label width="100%" textAlign="Center" text="This game uses freeware sounds"/>
+			<Link
+				href="https://github.com/sap/ui5-flush-game/Sounds_Credits.md"
+				width="100%"
+				textAlign="Center"
+				text="view all used sounds"
+				target="_blank"
+				class="sapUiSmallMarginBottom"/>
+			<Label width="100%" design="Bold" textAlign="Center" text="Thirdparty Software"/>
+			<Label width="100%" textAlign="Center" text="OpenUI5, createjs, Box2D, Animate.css, dom-to-image, balls, UI5 Tooling, eslint"/>
+			<Link
+				href="https://github.com/sap/ui5-flush-game/Thirdparty.md"
+				width="100%"
+				textAlign="Center"
+				text="view all thirdparty libraries"
+				target="_blank"
+				class="sapUiSmallMarginBottom"/>
+			<Label width="100%" design="Bold" textAlign="Center" text="Thank you for playing Flush"/>
+			<Label width="100%" textAlign="Center" text="Now defeat the evil render manager!"/>
+		</content>
+		<beginButton>
+			<Button
+				text="Close"
+				press=".onCloseDialog"/>
+		</beginButton>
+	</Dialog>
+</core:FragmentDefinition>

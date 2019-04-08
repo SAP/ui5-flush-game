@@ -1,0 +1,29 @@
+{
+  "name": "ui5-flushgame",
+  "version": "0.1.0",
+  "description": "Flush! Defeat the evil Render Manager",
+  "private": true,
+  "scripts": {
+    "start": "ui5 serve --open index.html",
+    "dev": "ui5 serve --open index_local.html",
+    "start-mac": "open http://localhost:8081/index.html & ui5 serve",
+    "dev-mac": "open http://localhost:8081/index_local.html & ui5 serve"
+  },
+  "dependencies": {
+    "@openui5/sap.m": "^1",
+    "@openui5/sap.ui.core": "^1",
+    "@openui5/sap.ui.layout": "^1",
+    "@openui5/themelib_sap_belize": "^1"
+  },
+  "devDependencies": {
+    "@ui5/cli": "^1.0.0",
+    "eslint": "^4.19.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:SAP/ui5-flushgame.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "Apache-2"
+}

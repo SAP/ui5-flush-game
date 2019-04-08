@@ -1,0 +1,98 @@
+<mvc:View
+	controllerName="flush.controller.Game"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:layout="sap.ui.layout"
+	xmlns:unified="sap.ui.unified"
+	xmlns:game="flush.controls">
+	<game:Game
+		score="{appView>/score}"
+		level="{view>/level}"
+		difficulty="{view>/difficulty}"
+		timeLimit="{view>/timeLimit}"
+		init=".onLevelInit"
+		end=".onLevelEnd"
+		busy="{view>/busy}"
+		enableScrolling="false"
+		title="{view>/title}"
+		showNavButton="true"
+		navButtonPress=".onBack"
+		player1Lives="{view>/player1Lives}"
+		player2Lives="{view>/player2Lives}"
+		player1Energy="{view>/player1Energy}"
+		player2Energy="{view>/player2Energy}"
+		hit=".onLevelHit"
+		bomb=".onLevelBomb"
+		id="page">
+		<game:headerContent>
+			<layout:HorizontalLayout class="sapUiSmallMarginEnd">
+				<ObjectNumber
+					visible="{= ${view>/remainingTime} !== undefined ? true : false }"
+					id="remainingTime"
+					number="Time: {view>/remainingTime}"
+					class="sapUiSmallMarginEnd"/>
+				<ObjectNumber
+					visible="{= !${view>/multi} }"
+					number="Total: {appView>/score}"/>
+			</layout:HorizontalLayout>
+		</game:headerContent>
+		<game:content>
+			<core:Fragment id="multiPlayer" fragmentName="flush.view.MultiPlayer" type="XML"/>
+			<core:Fragment id="arcadeBoard" fragmentName="flush.view.ArcadeBoard" type="XML"/>
+			<game:ControlManager id="controlManager" class="controlManager">
+				<CheckBox selected="true" valueState="Warning"/>
+				<Switch type="AcceptReject" state="false">
+					<layoutData>
+						<FlexItemData growFactor="1"/>
+					</layoutData>
+				</Switch>
+				<Button text="OpenUI5" width="100px"/>
+				<GenericTile
+					class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+					header="Flush!"
+					subheader="Defeat the evil rendermanager"
+					press="press">
+					<TileContent unit="" footer="">
+						<NumericContent value="2342" icon="sap-icon://line-charts"/>
+					</TileContent>
+				</GenericTile>
+				<unified:Calendar id="calendar"/>
+			</game:ControlManager>
+		</game:content>
+		<game:dependents>
+			<game:MessageToastStory id="PlopARobot">
+				<game:MessageToastDeluxe message="" duration="2000"/>
+				<game:MessageToastDeluxe
+					message="Plop the bad guys"
+					speaker="Render Manager"
+					image="RotRenderManagerDroht.png" duration="5000"
+					position="end center"/>
+			</game:MessageToastStory>
+			<game:MessageToastStory id="WhackABug">
+				<game:MessageToastDeluxe message="" duration="2000"/>
+				<game:MessageToastDeluxe
+					message="Find the bugs in my hardware"
+					speaker="Render Manager"
+					image="RotRenderManagerDroht.png"
+					duration="5000" position="end center"/>
+				<game:MessageToastDeluxe
+					message="But don't hit your friends!"
+					speaker="Render Manager"
+					image="RotRenderManagerDroht.png"
+					duration="5000"
+					position="begin center"/>
+			</game:MessageToastStory>
+			<game:MessageToastStory id="Uncontrollable">
+				<game:MessageToastDeluxe message="" duration="2000"/>
+				<game:MessageToastDeluxe
+					message="You better evade these controls or you will die, ha ha ha ha ha..."
+					speaker="Render Manager"
+					image="RotRenderManagerDroht.png"
+					duration="5000"
+					position="end center"/>
+			</game:MessageToastStory>
+		</game:dependents>
+	</game:Game>
+</mvc:View>
