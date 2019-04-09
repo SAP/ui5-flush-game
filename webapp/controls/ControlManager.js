@@ -13,7 +13,7 @@ sap.ui.define([
 	/**
 	 * Renders UI5 controls to images so that they can be placed on a canvas
 	 */
-	return Control.extend("flush.controls.ControlManager", {
+	return Control.extend("flush.game.controls.ControlManager", {
 		metadata: {
 			defaultAggregation: "content",
 			aggregations: {

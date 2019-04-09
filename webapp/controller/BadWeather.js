@@ -3,7 +3,7 @@ sap.ui.define([
 ], function(Object) {
 	"use strict";
 
-	return Object.extend("flush.controller.BadWeather", {
+	return Object.extend("flush.game.controller.BadWeather", {
 
 		/**
 		 * Stores a reference to the app component for maximum bad weather experience

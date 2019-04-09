@@ -2,14 +2,14 @@ sap.ui.define([
 	"sap/m/Page",
 	"sap/ui/core/HTML",
 	"sap/m/Image",
-	"flush/controls/MessageToastDeluxe"
+	"../controls/MessageToastDeluxe"
 ], function (Page, HTML, Image, MessageToastDeluxe) {
 	"use strict";
 
 	/**
 	 * Game class to load levels and introduce basic game mechanics
 	 */
-	var oGame = Page.extend("flush.controls.Game", {
+	var oGame = Page.extend("flush.game.controls.Game", {
 		metadata: {
 			properties: {
 				/* the level to be loaded */
@@ -507,7 +507,7 @@ sap.ui.define([
 				iDifficulty = this.getDifficulty();
 
 			var fnInit = function () {
-				sap.ui.require(["flush/levels/" + this.getProperty("level") + "/Level"], function (Level) {
+				sap.ui.require(["flush/game/levels/" + this.getProperty("level") + "/Level"], function (Level) {
 					var oController = this.getParent();
 					var oCanvas = oController.byId(this.getId() + "-canvas");
 					var oCanvasDebug = sap.ui.getCore().byId("debugCanvas");
@@ -576,7 +576,7 @@ sap.ui.define([
 	 */
 	var fnOrigInvalidate = oGame.prototype.invalidate;
 	oGame.prototype.invalidate = function (oSource) {
-		if (oSource && oSource.getMetadata().getName() === "flush.controls.ControlManager") {
+		if (oSource && oSource.getMetadata().getName() === "flush.game.controls.ControlManager") {
 			return;
 		} else {
 			fnOrigInvalidate.apply(this, arguments);

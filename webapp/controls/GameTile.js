@@ -10,7 +10,7 @@ sap.ui.define([
 	/**
 	 * Custom game tile that can be locked and unlocked to show the game progress
 	 */
-	return CustomTile.extend("flush.controls.GameTile", {
+	return CustomTile.extend("flush.game.controls.GameTile", {
 		metadata: {
 			properties: {
 				/* displays a lock and disables the click on the tile if set */

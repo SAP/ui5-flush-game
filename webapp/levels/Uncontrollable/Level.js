@@ -465,7 +465,7 @@ sap.ui.define([
 
 		/**
 		 * Connect the game and the canvas to the level
-		 * @param {flush.controls.Game} oGame the global game object.
+		 * @param {flush.game.controls.Game} oGame the global game object.
 		 * @param {Object} aCanvas First element is the game canvas, second element is the game debug canvas.
 		 */
 		constructor: function(oGame, aCanvas, oControlManager) {
@@ -648,7 +648,6 @@ sap.ui.define([
 
 							this.dropTable();
 							_oGame.getSoundManager().play("devil");
-							_oGame.getSoundManager().play("big_bomb");
 						}
 
 						fnCampingInterval();
@@ -658,7 +657,7 @@ sap.ui.define([
 				_iLastSignificantMovement = Date.now() + 10000;
 				fnCampingInterval();
 
-				var sAssetPath = sap.ui.require.toUrl("flush/levels/Uncontrollable/assets");
+				var sAssetPath = sap.ui.require.toUrl("flush/game/levels/Uncontrollable/assets");
 				assetLoader = new createjs.LoadQueue(false);
 				assetLoader.on("complete", this.onLoadingCompleted, this);
 				assetLoader.crossOrigin = "";

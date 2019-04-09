@@ -16,7 +16,7 @@ sap.ui.define([
 
 		/**
 		 * Connect the game and the canvas to the level
-		 * @param {flush.controls.Game} oGame the global game object
+		 * @param {flush.game.controls.Game} oGame the global game object
 		 * @param {Object} aCanvas First element is the game canvas, second element is the game debug canvas.
 		 */
 		constructor: function (oGame, aCanvas) {
@@ -58,7 +58,7 @@ sap.ui.define([
 
 				loader = new createjs.LoadQueue(false);
 				loader.addEventListener("complete", this.onLoadingCompleted.bind(this));
-				loader.loadManifest(manifest, true, sap.ui.require.toUrl("flush/levels/WhackABug/assets") + "/");
+				loader.loadManifest(manifest, true, sap.ui.require.toUrl("flush/game/levels/WhackABug/assets") + "/");
 
 				// sync keyboard
 				document.addEventListener("keydown",this._boundKeyDown);

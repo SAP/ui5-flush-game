@@ -6,7 +6,7 @@ sap.ui.define([
 ], function (Controller, UIComponent, mobileLibrary, Fragment) {
 	"use strict";
 
-	return Controller.extend("flush.controller.BaseController", {
+	return Controller.extend("flush.game.controller.BaseController", {
 
 		/**
 		 * Creates a promise to be resolved after the first re-rendering
@@ -200,7 +200,7 @@ sap.ui.define([
 				// stop all
 				if (this.byId("page")) {
 					this.byId("page").getDependents().forEach(function (oStory) {
-						if (oStory instanceof flush.controls.MessageToastStory) {
+						if (oStory instanceof flush.game.controls.MessageToastStory) {
 							oStory.stop();
 						}
 					});
@@ -223,7 +223,7 @@ sap.ui.define([
 			if (!this.byId("Credits")) {
 				Fragment.load({
 					id: this.getView().getId(),
-					name: "flush.view.Credits",
+					name: "flush.game.view.Credits",
 					controller: oFragmentController
 				}).then(function (oCreditsDialog) {
 					oCreditsDialog.setInitialFocus(oCreditsDialog.getBeginButton());

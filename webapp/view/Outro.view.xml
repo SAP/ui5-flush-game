@@ -1,10 +1,10 @@
 <mvc:View
-	controllerName="flush.controller.Outro"
+	controllerName="flush.game.controller.Outro"
 	displayBlock="true"
 	xmlns="sap.m"
 	xmlns:core="sap.ui.core"
 	xmlns:mvc="sap.ui.core.mvc"
-	xmlns:game="flush.controls">
+	xmlns:game="flush.game.controls">
 	<Page
 		id="page"
 		enableScrolling="false"
@@ -20,7 +20,7 @@
 				formatter: '.formatter.pictureUrl'
 			}"
 			height="720px"/>
-			<core:Fragment id="arcadeBoard" fragmentName="flush.view.ArcadeBoard" type="XML"/>
+			<core:Fragment id="arcadeBoard" fragmentName="flush.game.view.ArcadeBoard" type="XML"/>
 		</content>
 		<dependents>
 			<game:MessageToastStory id="outro">

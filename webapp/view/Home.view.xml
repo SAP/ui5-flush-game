@@ -1,11 +1,11 @@
 <mvc:View
-	controllerName="flush.controller.Home"
+	controllerName="flush.game.controller.Home"
 	displayBlock="true"
 	xmlns="sap.m"
 	xmlns:core="sap.ui.core"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:layout="sap.ui.layout"
-	xmlns:game="flush.controls">
+	xmlns:game="flush.game.controls">
 	<Page
 		title="{i18n>homeTitle}"
 		class="homeScreen"
@@ -175,7 +175,7 @@
 					</game:customData>
 				</game:GameTile>
 			</TileContainer>
-			<core:Fragment id="arcadeBoard" fragmentName="flush.view.ArcadeBoard" type="XML"/>
+			<core:Fragment id="arcadeBoard" fragmentName="flush.game.view.ArcadeBoard" type="XML"/>
 		</content>
 		<dependents>
 			<game:MessageToastStory id="intro">
