@@ -1,7 +1,7 @@
 sap.ui.define([
 	"./BaseController",
 	"sap/ui/model/json/JSONModel",
-	"flush/controls/MessageToastDeluxe",
+	"../controls/MessageToastDeluxe",
 	"../model/formatter",
 	"sap/ui/test/actions/Press",
 	"sap/base/util/UriParameters",
@@ -10,7 +10,7 @@ sap.ui.define([
 ], function (BaseController, JSONModel, MessageToastDeluxe, formatter, Press, UriParameters, Fragment, jQuery) {
 	"use strict";
 
-	return BaseController.extend("flush.controller.App", {
+	return BaseController.extend("flush.game.controller.App", {
 
 		formatter: formatter,
 
@@ -277,7 +277,7 @@ sap.ui.define([
 							if (!oSwitchModeConfirmDialog) {
 								Fragment.load({
 									id: this.getView().getId(),
-									name: "flush.view.SwitchMode",
+									name: "flush.game.view.SwitchMode",
 									controller: oFragmentController
 								}).then(function (oSwitchModeConfirmDialog) {
 									oSwitchModeConfirmDialog.setInitialFocus(oSwitchModeConfirmDialog.getBeginButton());
@@ -315,7 +315,7 @@ sap.ui.define([
 						if (!oEscapeDialog) {
 							Fragment.load({
 								id: this.getView().getId(),
-								name: "flush.view.Escape",
+								name: "flush.game.view.Escape",
 								controller: oFragmentController
 							}).then(function (oEscapeDialog) {
 								oEscapeDialog.setInitialFocus(oEscapeDialog.getBeginButton());
@@ -351,7 +351,7 @@ sap.ui.define([
 					case "h":
 						var oControl = sap.ui.getCore().byId(document.activeElement.getAttribute("id"));
 						// game handles input separately and needs more infos like coordinates
-						if (oControl && oControl.getMetadata().getName() !== "flush.controls.Game") {
+						if (oControl && oControl.getMetadata().getName() !== "flush.game.controls.Game") {
 							fnSimulateClick(oControl);
 						}
 						break;

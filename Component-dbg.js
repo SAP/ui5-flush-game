@@ -10,7 +10,7 @@ sap.ui.define([
 ], function (UIComponent, Device, JSONModel, models, SoundManager, BadWeather) {
 	"use strict";
 
-	return UIComponent.extend("flush.Component", {
+	return UIComponent.extend("flush.game.Component", {
 
 		metadata: {
 			manifest: "json"
@@ -102,7 +102,7 @@ sap.ui.define([
 					fnResolve();
 				}.bind(this));
 
-				loader.loadManifest(manifest, true, sap.ui.require.toUrl("flush/images") + "/");
+				loader.loadManifest(manifest, true, sap.ui.require.toUrl("flush/game/images") + "/");
 			});
 		}
 

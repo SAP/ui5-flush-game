@@ -27,7 +27,7 @@ sap.ui.define([
 
 		/**
 		 * Connect the game and the canvas to the level
-		 * @param {flush.controls.Game} oGame the global game object
+		 * @param {flush.game.controls.Game} oGame the global game object
 		 * @param {Object} aCanvas First element is the game canvas, second element is the game debug canvas.
 		 * @param {Object} oControlManager ControlManager instance
 		 */
@@ -108,7 +108,7 @@ sap.ui.define([
 				box2d.init(canvas, debugCanvas, fnPlayerWasHitByControl, fnControlPackageCollected, this._iDifficulty, fnRemoveActor, this.oGame.getSoundManager());
 
 				oAssetLoader = new createjs.LoadQueue(false);
-				var sPath = sap.ui.require.toUrl("flush/levels/UncontrollableMultiplayer") + "/";
+				var sPath = sap.ui.require.toUrl("flush/game/levels/UncontrollableMultiplayer") + "/";
 
 				// Not supported in IE11, but IDC :)
 				var oManifestModel = new JSONModel();

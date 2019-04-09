@@ -1,5 +1,5 @@
 <mvc:View
-	controllerName="flush.controller.App"
+	controllerName="flush.game.controller.App"
 	displayBlock="true"
 	xmlns="sap.m"
 	xmlns:mvc="sap.ui.core.mvc"

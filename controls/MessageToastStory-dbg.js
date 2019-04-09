@@ -1,13 +1,13 @@
 sap.ui.define([
 	"sap/ui/core/Control",
-	"flush/controls/MessageToastDeluxe",
+	"../controls/MessageToastDeluxe",
 ], function (Control/*, MessageToastDeluxe*/) {
 	"use strict";
 
 	/**
 	 * MessageToastStory builds up a queue of message toasts to be played
 	 */
-	return Control.extend("flush.controls.MessageToastStory", {
+	return Control.extend("flush.game.controls.MessageToastStory", {
 		metadata: {
 			properties: {
 				"random": {
@@ -26,7 +26,7 @@ sap.ui.define([
 			defaultAggregation: "steps",
 			aggregations: {
 				"steps": {
-					type: "flush.controls.MessageToastDeluxe",
+					type: "flush.game.controls.MessageToastDeluxe",
 					multiple: true
 				}
 			}

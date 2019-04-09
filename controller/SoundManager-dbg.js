@@ -7,7 +7,7 @@ sap.ui.define([
 ], function(UI5Object, UriParameters, Log) {
 	"use strict";
 
-	return UI5Object.extend("flush.controller.SoundManager", {
+	return UI5Object.extend("flush.game.controller.SoundManager", {
 		init: function () {
 			createjs.Sound.on("fileload", this._loadHandler, this);
 
@@ -64,7 +64,7 @@ sap.ui.define([
 			Object.keys(this._oSounds).forEach(function (sId) {
 				this._oSoundPromises[sId] = new Promise(function (fnResolve) {
 					this._oSoundResolve[sId] = fnResolve;
-					var sSoundFile = sap.ui.require.toUrl("flush/sounds") +  "/" + this._oSounds[sId];
+					var sSoundFile = sap.ui.require.toUrl("flush/game/sounds") +  "/" + this._oSounds[sId];
 					createjs.Sound.registerSound(sSoundFile, sId);
 				}.bind(this));
 

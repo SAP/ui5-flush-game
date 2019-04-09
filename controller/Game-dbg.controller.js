@@ -1,13 +1,13 @@
 sap.ui.define([
 	"./BaseController",
 	"sap/ui/model/json/JSONModel",
-	"flush/controls/MessageToastDeluxe",
+	"../controls/MessageToastDeluxe",
 	"../model/formatter",
 	"sap/base/util/UriParameters",
 ], function (BaseController, JSONModel, MessageToastDeluxe, formatter, UriParameters) {
 	"use strict";
 
-	return BaseController.extend("flush.controller.Game", {
+	return BaseController.extend("flush.game.controller.Game", {
 
 		formatter: formatter,
 

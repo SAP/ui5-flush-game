@@ -5,7 +5,7 @@ sap.ui.define([
 ], function(BaseController, JSONModel, formatter) {
 	"use strict";
 
-	return BaseController.extend("flush.controller.Multi", {
+	return BaseController.extend("flush.game.controller.Multi", {
 
 		formatter: formatter,
 

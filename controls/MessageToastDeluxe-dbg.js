@@ -10,7 +10,7 @@ sap.ui.define([
 	/**
 	 * MessageToast wrapped as a control so that we can define it declaratively and extend it with an image
 	 */
-	return Control.extend("flush.controls.MessageToastDeluxe", {
+	return Control.extend("flush.game.controls.MessageToastDeluxe", {
 		metadata: {
 			properties: {
 				/* message toast image*/
@@ -113,7 +113,7 @@ sap.ui.define([
 				aFallbackSize = this._getFallbackSize(this.getImage());
 
 			var oImage = document.createElement("img");
-			oImage.setAttribute("src", sap.ui.require.toUrl("flush/images") + '/' + this.getImage());
+			oImage.setAttribute("src", sap.ui.require.toUrl("flush/game/images") + '/' + this.getImage());
 			oImage.classList.add("messageToastDeluxeImage");
 
 			if (this.getMessage()) {

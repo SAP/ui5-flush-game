@@ -8,7 +8,7 @@ sap.ui.define([], function () {
 		 * @return {string} relative image URL
 		 */
 		pictureUrl: function (sUrl) {
-			return sap.ui.require.toUrl("flush/" + sUrl);
+			return sap.ui.require.toUrl("flush/game/" + sUrl);
 		},
 
 		/**
