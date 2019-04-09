@@ -170,7 +170,6 @@ sap.ui.define([
 						for (var i = 0; i < _aLastHorizontalMovements.length - 2; i++) {
 							iDelta += _aLastHorizontalMovements[i + 1] - _aLastHorizontalMovements[i];
 						}
-						//console.log("movement delta: " + iDelta + " " + _aLastHorizontalMovements.length);
 						if (Math.abs(iDelta) > 2) {
 							_iLastSignificantMovement = Date.now();
 							_bCampingWarningDisplayed = false;
@@ -199,7 +198,6 @@ sap.ui.define([
 						break;
 					case "ArrowUp":
 					case "w":
-						console.log("up start");
 						if (!_oGame.getSoundManager().isPlaying("Raketenduese")) {
 							_oGame.getSoundManager().play("Raketenduese", undefined, undefined, 0.5)
 						}
@@ -245,7 +243,6 @@ sap.ui.define([
 						_oGame.getSoundManager().stop("Raketenduese");
 						player.gotoAndPlay("run");
 						this._movement[1] = 0;
-						console.log("up end");
 						clearInterval(this._iIntervalUp);
 						break;
 					case "ArrowDown":
