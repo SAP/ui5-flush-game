@@ -7,7 +7,7 @@ before_install:
 - "export DISPLAY=:99.0"
 - "sh -e /etc/init.d/xvfb start"
 before_script:
-- ui5 build -a
+- ui5 build
 
 deploy:
   provider: pages
