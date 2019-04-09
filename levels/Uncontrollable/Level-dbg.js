@@ -633,8 +633,6 @@ sap.ui.define([
 							_bCampingWarningDisplayed = true;
 						}
 
-						// TODO: show shadow for table
-
 						// deduct anti cheating penalty and get crushed
 						if (iLastMovementDelta > 6) {
 							setTimeout(function() {
@@ -648,6 +646,7 @@ sap.ui.define([
 
 							this.dropTable();
 							_oGame.getSoundManager().play("devil");
+							_oGame.getSoundManager().play("shoot");
 						}
 
 						fnCampingInterval();

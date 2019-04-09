@@ -328,6 +328,7 @@ sap.ui.define([
 					if (!this.getSoundManager().isPlaying("devil")) {
 						this.getSoundManager().play("devil");
 					}
+					this.getSoundManager().play("badHit");
 					break;
 				case "Points":
 					var oSprite = new MessageToastDeluxe({
