@@ -119,7 +119,7 @@
 				<game:MessageToastDeluxe message="Who will be the last robot standing this time?" speaker="Render Manager" image="RotRenderManagerDroht.png" duration="5000" position="begin center"/>
 				<game:MessageToastDeluxe message="A competition? How ridiculous you both are!" speaker="Render Manager" image="RotRenderManagerDroht.png" duration="5000" position="begin bottom"/>
 				<game:MessageToastDeluxe message="Who will be remaining to become my Padawan, hahahaha?!" speaker="Render Manager" image="RotRenderManagerDroht.png" duration="5000" position="end center"/>
-				<game:MessageToastDeluxe message="Who will disgrace himself this time?" speaker="Render Manager" image="RotRenderManagerDroht.png" duration="5000" position="begin center"/>
+				<game:MessageToastDeluxe message="Who will disgrace him or herself this time?" speaker="Render Manager" image="RotRenderManagerDroht.png" duration="5000" position="begin center"/>
 				<game:MessageToastDeluxe message="The winner of this match will be recruited for my evil army!" speaker="Render Manager" image="RotRenderManagerDroht.png" duration="5000" position="center center"/>
 				<game:MessageToastDeluxe message="Must... flush... all... controls... now!!1111!1!11" speaker="Render Manager" image="RotRenderManagerDroht.png" duration="5000" position="end center"/>
 			</game:MessageToastStory>

@@ -54,7 +54,7 @@
 				target="_blank"
 				class="sapUiSmallMarginBottom"/>
 			<Label width="100%" design="Bold" textAlign="Center" text="Thirdparty Software"/>
-			<Label width="100%" textAlign="Center" text="OpenUI5, createjs, Box2D, Animate.css, dom-to-image, balls, UI5 Tooling, eslint"/>
+			<Label width="100%" textAlign="Center" text="OpenUI5, CreateJS, Box2D, Animate.css, dom-to-image, UI5 Tooling, balls, eslint"/>
 			<Link
 				href="https://github.com/sap/ui5-flush-game/Thirdparty.md"
 				width="100%"
