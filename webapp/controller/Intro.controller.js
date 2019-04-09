@@ -183,6 +183,15 @@ sap.ui.define([
 		 * @private
 		 */
 		_playIntro: function () {
+			// fix for chrome 70 security update - resume sounds after first user gesture
+			if (new AudioContext().state === "suspended") {
+				this.getModel("view").setProperty("/instructions", "Please click anywhere to enable the intro sound");
+				document.addEventListener("click", function () {
+					this.getSoundManager().play("thunderLightning");
+					this.getModel("view").setProperty("/instructions", "Thanks, enjoy the game!");
+				}.bind(this));
+			}
+
 			this._bAnimateMood = false;
 			this._bCarouselStoryTriggeredChange = true;
 			this._bIntroPlaying = true;
