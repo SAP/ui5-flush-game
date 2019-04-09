@@ -251,7 +251,7 @@
 }
 
 .flush .arcadeControls .sapUiHLayoutChildWrapper:last-child {
-/*	float: right;*/
+	float: right;
 }
 
 .flush .arcadeControls .moodLabel {

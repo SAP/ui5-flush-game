@@ -650,6 +650,8 @@ sap.ui.define([
 							}, 1000);
 
 							this.dropTable();
+							_oGame.getSoundManager().play("devil");
+							_oGame.getSoundManager().play("big_bomb");
 						}
 
 						fnCampingInterval();

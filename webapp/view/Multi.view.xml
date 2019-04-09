@@ -22,7 +22,7 @@
 					}"
 					class="flushLogo"/>
 				<ToolbarSpacer/>
-				<ObjectNumber number="Score: {view>/player1wins} : {view>/player2wins}"/>
+				<ObjectNumber number="Score: {view>/player1wins} : {view>/player2wins}" class="sapUiSmallMarginEnd"/>
 			</Toolbar>
 		</customHeader>
 		<headerContent>
