@@ -74,6 +74,7 @@ sap.ui.define([
 				return this.snow(sHardness);
 			}
 
+			this.stopRain();
 			this._bStopRain = false;
 
 			var iDrops,
