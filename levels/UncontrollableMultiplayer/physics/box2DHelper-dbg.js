@@ -376,7 +376,6 @@ sap.ui.define([
 			}
 			bodiesToRemove = [];
 
-			//console.log("Active Actors count:" + box2dActors.length);
 			// update active actors
 			for (var i = 0, l = box2dActors.length; i < l; i++) {
 				box2dActors[i].update();
