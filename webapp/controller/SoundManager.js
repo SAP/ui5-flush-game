@@ -30,7 +30,7 @@ sap.ui.define([
 				"Win": "beep_win.mp3",
 				"Loose": "beep_loose.mp3",
 				"Level": "Musik_Tristan.mp3", // normal
-				//"Level": "Jingle Bells 3.mp3", // X-mas
+				//"Level": "Jingle_Bells_3.mp3", // X-mas
 				"big_bomb": "sounds_multiplayer/Bomb.mp3",
 				"devil": "RenderManagerLachtTeuflisch.mp3",
 				"start": "start_any_gamelevel.mp3",

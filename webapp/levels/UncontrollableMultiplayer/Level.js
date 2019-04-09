@@ -84,6 +84,7 @@ sap.ui.define([
 								this.oGame.hit(iPlayer);
 							}
 							this.oGame.getSoundManager().play("goodHit");
+							this.getSoundManager().play("badHit");
 							this.oGame.getSoundManager().play("hammer");
 						}
 					}
