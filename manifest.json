@@ -34,9 +34,6 @@
 			"async": true,
 			"id": "app"
 		},
-		"resourceRoots": {
-			"flush.game": "./"
-		},
 		"dependencies": {
 			"minUI5Version": "1.60.0",
 			"libs": {
