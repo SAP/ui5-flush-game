@@ -1,0 +1,53 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:layout="sap.ui.layout"
+	xmlns:core="sap.ui.core">
+	<layout:HorizontalLayout
+		visible="{view>/multi}"
+		class="arcadeControls multiPlayerControls sapUiContentPadding sapUiSmallMarginBeginEnd">
+		<layout:VerticalLayout>
+			<layout:HorizontalLayout
+				class="lifeBar"
+				content="{view>/player1LivesArray}">
+				<Image
+					width="50px"
+					src="{
+						path: 'appView>/player1',
+						formatter: '.formatter.pictureUrl'
+					}"/>
+			</layout:HorizontalLayout>
+			<ProgressIndicator
+				visible="false"
+				width="250px"
+				height="1.5rem"
+				percentValue="{view>/player1Energy}"
+				state="Warning"
+				class="energyBar sapUiNoMarginBottom sapUiTinyMarginTop"/>
+		</layout:VerticalLayout>
+		<Text
+			width="690px"
+			visible="{= ${view>/instructions} !== ''}"
+			text="{view>/instructions}"
+			textAlign="Center"
+			class="moodLabel"/>
+		<layout:VerticalLayout>
+			<layout:HorizontalLayout
+				class="lifeBar"
+				content="{view>/player2LivesArray}">
+				<Image
+					width="50px"
+					src="{
+						path: 'appView>/player2',
+						formatter: '.formatter.pictureUrl'
+					}"/>
+			</layout:HorizontalLayout>
+			<ProgressIndicator
+				visible="false"
+				width="250px"
+				height="1.5rem"
+				percentValue="{view>/player2Energy}"
+				state="Warning"
+				class="energyBar sapUiNoMarginBottom sapUiTinyMarginTop"/>
+		</layout:VerticalLayout>
+	</layout:HorizontalLayout>
+</core:FragmentDefinition>

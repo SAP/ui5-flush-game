@@ -1,0 +1,215 @@
+<mvc:View
+	controllerName="flush.controller.Home"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:layout="sap.ui.layout"
+	xmlns:game="flush.controls">
+	<Page
+		title="{i18n>homeTitle}"
+		class="homeScreen"
+		id="page">
+		<customHeader>
+			<Toolbar>
+				<Button icon="sap-icon://video" text="Intro" tooltip="Play Intro" press=".onIntro"/>
+				<Button icon="sap-icon://group" text="Credits" tooltip="Show Credits Dialog" press=".onCredits"/>
+				<ToolbarSpacer/>
+				<Image
+					src="{
+						path: 'appView>/flushLogo',
+						formatter: '.formatter.pictureUrl'
+					}"
+					class="flushLogo"/>
+				<ToolbarSpacer/>
+				<ObjectNumber number="Total: {appView>/score}" class="sapUiSmallMarginEnd"/>
+			</Toolbar>
+		</customHeader>
+		<headerContent>
+
+		</headerContent>
+		<content>
+			<TileContainer id="levels" height="720px">
+				<game:GameTile press=".onLevel">
+					<game:content>
+						<layout:VerticalLayout width="100%">
+							<Title titleStyle="H1" text="1" class="levelNumber"/>
+							<Label text="Plop!" textAlign="Center" class="levelName"/>
+						</layout:VerticalLayout>
+					</game:content>
+					<game:customData>
+						<core:CustomData key="level" value="PlopARobot"/>
+						<core:CustomData key="difficulty" value="1"/>
+					</game:customData>
+				</game:GameTile>
+				<game:GameTile press=".onLevel">
+					<game:content>
+						<layout:VerticalLayout width="100%">
+							<Title titleStyle="H1" text="2" class="levelNumber"/>
+							<Label text="Whack!" textAlign="Center" class="levelName"/>
+						</layout:VerticalLayout>
+					</game:content>
+					<game:customData>
+						<core:CustomData key="level" value="WhackABug"/>
+						<core:CustomData key="difficulty" value="1"/>
+					</game:customData>
+				</game:GameTile>
+				<game:GameTile press=".onLevel">
+					<game:content>
+						<layout:VerticalLayout width="100%">
+							<Title titleStyle="H1" text="3" class="levelNumber"/>
+							<Label text="Bounce!" textAlign="Center" class="levelName"/>
+						</layout:VerticalLayout>
+					</game:content>
+					<game:customData>
+						<core:CustomData key="level" value="Uncontrollable"/>
+						<core:CustomData key="difficulty" value="1"/>
+					</game:customData>
+				</game:GameTile>
+				<game:GameTile press=".onLevel">
+					<game:content>
+						<layout:VerticalLayout width="100%">
+							<Title titleStyle="H1" text="4" class="levelNumber"/>
+							<Label text="Plop Deluxe" textAlign="Center" class="levelName"/>
+						</layout:VerticalLayout>
+					</game:content>
+					<game:customData>
+						<core:CustomData key="level" value="PlopARobot"/>
+						<core:CustomData key="difficulty" value="5"/>
+					</game:customData>
+				</game:GameTile>
+				<game:GameTile press=".onLevel">
+					<game:content>
+						<layout:VerticalLayout width="100%">
+							<Title titleStyle="H1" text="5" class="levelNumber"/>
+							<Label text="Whack Deluxe" textAlign="Center" class="levelName"/>
+						</layout:VerticalLayout>
+					</game:content>
+					<game:customData>
+						<core:CustomData key="level" value="WhackABug"/>
+						<core:CustomData key="difficulty" value="5"/>
+					</game:customData>
+				</game:GameTile>
+				<game:GameTile press=".onLevel">
+					<game:content>
+						<layout:VerticalLayout width="100%">
+							<Title titleStyle="H1" text="6" class="levelNumber"/>
+							<Label text="Bounce Deluxe" textAlign="Center" class="levelName"/>
+						</layout:VerticalLayout>
+					</game:content>
+					<game:customData>
+						<core:CustomData key="level" value="Uncontrollable"/>
+						<core:CustomData key="difficulty" value="5"/>
+					</game:customData>
+				</game:GameTile>
+				<game:GameTile press=".onLevel">
+					<game:content>
+						<layout:VerticalLayout width="100%">
+							<Title titleStyle="H1" text="7" class="levelNumber"/>
+							<Label text="Plop Hard" textAlign="Center" class="levelName"/>
+						</layout:VerticalLayout>
+					</game:content>
+					<game:customData>
+						<core:CustomData key="level" value="PlopARobot"/>
+						<core:CustomData key="difficulty" value="10"/>
+					</game:customData>
+				</game:GameTile>
+				<game:GameTile press=".onLevel">
+					<game:content>
+						<layout:VerticalLayout width="100%">
+							<Title titleStyle="H1" text="8" class="levelNumber"/>
+							<Label text="Whack Hard" textAlign="Center" class="levelName"/>
+						</layout:VerticalLayout>
+					</game:content>
+					<game:customData>
+						<core:CustomData key="level" value="WhackABug"/>
+						<core:CustomData key="difficulty" value="10"/>
+					</game:customData>
+				</game:GameTile>
+				<game:GameTile press=".onLevel">
+					<game:content>
+						<layout:VerticalLayout width="100%">
+							<Title titleStyle="H1" text="9" class="levelNumber"/>
+							<Label text="Bounce Hard" textAlign="Center" class="levelName"/>
+						</layout:VerticalLayout>
+					</game:content>
+					<game:customData>
+						<core:CustomData key="level" value="Uncontrollable"/>
+						<core:CustomData key="difficulty" value="10"/>
+					</game:customData>
+				</game:GameTile>
+				<game:GameTile press=".onLevel">
+					<game:content>
+						<layout:VerticalLayout width="100%">
+							<Title titleStyle="H1" text="10" class="levelNumber"/>
+							<Label text="Plop Impossible" textAlign="Center" class="levelName"/>
+						</layout:VerticalLayout>
+					</game:content>
+					<game:customData>
+						<core:CustomData key="level" value="PlopARobot"/>
+						<core:CustomData key="difficulty" value="20"/>
+					</game:customData>
+				</game:GameTile>
+				<game:GameTile press=".onLevel">
+					<game:content>
+						<layout:VerticalLayout width="100%">
+							<Title titleStyle="H1" text="11" class="levelNumber"/>
+							<Label text="Whack Impossible" textAlign="Center" class="levelName"/>
+						</layout:VerticalLayout>
+					</game:content>
+					<game:customData>
+						<core:CustomData key="level" value="WhackABug"/>
+						<core:CustomData key="difficulty" value="20"/>
+					</game:customData>
+				</game:GameTile>
+				<game:GameTile press=".onLevel">
+					<game:content>
+						<layout:VerticalLayout width="100%">
+							<Title titleStyle="H1" text="12" class="levelNumber"/>
+							<Label text="Bounce Impossible" textAlign="Center" class="levelName"/>
+						</layout:VerticalLayout>
+					</game:content>
+					<game:customData>
+						<core:CustomData key="level" value="Uncontrollable"/>
+						<core:CustomData key="difficulty" value="20"/>
+					</game:customData>
+				</game:GameTile>
+			</TileContainer>
+			<core:Fragment id="arcadeBoard" fragmentName="flush.view.ArcadeBoard" type="XML"/>
+		</content>
+		<dependents>
+			<game:MessageToastStory id="intro">
+				<game:MessageToastDeluxe message="" duration="2000"/>
+				<game:MessageToastDeluxe message="Choose your poison to defeat me, the mighty Render Manager. Score 10.000 points to calm my mood and win!" speaker="Render Manager" image="RotRenderManagerDroht.png" duration="5000" position="center center"/>
+				<game:MessageToastDeluxe message="" duration="5000"/>
+			</game:MessageToastStory>
+			<game:MessageToastStory id="lucky">
+				<game:MessageToastDeluxe message="" duration="2000"/>
+				<game:MessageToastDeluxe message="Wow, i feel much better now, thanks!" speaker="Render Manager" image="RotRenderManagerDroht.png" duration="5000" position="center center"/>
+				<game:MessageToastDeluxe message="" duration="5000"/>
+			</game:MessageToastStory>
+			<game:MessageToastStory id="fool">
+				<game:MessageToastDeluxe message="" duration="2000"/>
+				<game:MessageToastDeluxe message="Seriously? That made my mood even worse, try harder!" speaker="Render Manager" image="RotRenderManagerDroht.png" duration="5000" position="center center"/>
+				<game:MessageToastDeluxe message="" duration="5000"/>
+			</game:MessageToastStory>
+			<game:MessageToastStory
+				id="randomQuotes"
+				random="true"
+				loop="true"
+				delay="3000">
+				<game:MessageToastDeluxe message="Pressing ALT+F4 activates god mode!" speaker="Render Manager" image="RotRenderManagerDroht.png" duration="5000" position="end center"/>
+				<game:MessageToastDeluxe message="Forget it, you will never beat me!" speaker="Render Manager" image="RotRenderManagerDroht.png" duration="5000" position="end center"/>
+				<game:MessageToastDeluxe message="Catch me if you can or give up!" speaker="Render Manager" image="RotRenderManagerDroht.png" duration="5000" position="begin center"/>
+				<game:MessageToastDeluxe message="I am the evil Render Manager, hahahahahahaha!" speaker="Render Manager" image="RotRenderManagerDroht.png" duration="5000" position="begin bottom"/>
+				<game:MessageToastDeluxe message="Woe betide you! Don't touch my holy circuits!" speaker="Render Manager" image="RotRenderManagerDroht.png" duration="5000" position="end center"/>
+				<game:MessageToastDeluxe message="You cannot defeat me, fool!" speaker="Render Manager" image="RotRenderManagerDroht.png" duration="5000" position="end center"/>
+				<game:MessageToastDeluxe message="Don't bother me and let me render controls like smoke!" speaker="Render Manager" image="RotRenderManagerDroht.png" duration="5000" position="center center"/>
+				<game:MessageToastDeluxe message="Let us fight hand in hand, hahahahahahaha!" speaker="Render Manager" image="RotRenderManagerDroht.png" duration="5000" position="center center"/>
+				<game:MessageToastDeluxe message="I'm going to flush you away with my controls!" speaker="Render Manager" image="RotRenderManagerDroht.png" duration="5000" position="begin center"/>
+				<game:MessageToastDeluxe message="Try to restore me! I dare you!" speaker="Render Manager" image="RotRenderManagerDroht.png" duration="5000" position="center center"/>
+				<game:MessageToastDeluxe message="Must... flush... all... controls... now!!1111!1!11" speaker="Render Manager" image="RotRenderManagerDroht.png" duration="5000" position="end center"/>
+			</game:MessageToastStory>
+		</dependents>
+	</Page>
+</mvc:View>

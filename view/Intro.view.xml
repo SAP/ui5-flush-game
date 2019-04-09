@@ -1,0 +1,66 @@
+<mvc:View
+	controllerName="flush.controller.Intro"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:game="flush.controls">
+	<Page
+		id="page"
+		enableScrolling="false"
+		title="{i18n>introTitle}">
+		<headerContent>
+			<Button icon="sap-icon://video" text="Skip Intro" press=".onSkip"/>
+		</headerContent>
+		<content>
+			<Carousel
+				id="introBg"
+				height="720px"
+				showPageIndicator="false"
+				pages="{view>/intro}"
+				pageChanged=".onCarouselChange">
+				<Image
+					src="{
+						path: 'view>file',
+						formatter: '.formatter.pictureUrl'
+					}"
+					height="720px"/>
+			</Carousel>
+			<core:Fragment id="arcadeBoard" fragmentName="flush.view.ArcadeBoard" type="XML"/>
+		</content>
+		<dependents>
+			<game:MessageToastStory id="intro0">
+				<game:MessageToastDeluxe message="" duration="2000"/>
+				<game:MessageToastDeluxe message="UI5 Industries presents" duration="2000" position="635 500"/>
+				<game:MessageToastDeluxe message="" image="flush_logo_xl.png" duration="3000" position="635 500"/>
+			</game:MessageToastStory>
+			<game:MessageToastStory id="intro1">
+				<game:MessageToastDeluxe message="" duration="1000"/>
+				<game:MessageToastDeluxe message="Oh dear, this Fiori Launchpad is a total mess, all tiles fell down" speaker="Prodi" image="GruenHoffnungsvoll.png" duration="3000" position="begin center"/>
+				<game:MessageToastDeluxe message="Poor Render Manager has to tidy up all of them" speaker="Scrummy" image="OrangeBefuerchtet.png" duration="4000" position="end center"/>
+			</game:MessageToastStory>
+			<game:MessageToastStory id="intro2">
+				<game:MessageToastDeluxe message="" duration="3500"/>
+				<game:MessageToastDeluxe message="" image="effect_awesome.png" duration="1" position="begin 500"/>
+				<game:MessageToastDeluxe message="Damn, he has been hit by a flash!" speaker="Scary" image="LilaDebatiert.png" duration="3000" position="end center"/>
+			</game:MessageToastStory>
+			<game:MessageToastStory id="intro3">
+				<game:MessageToastDeluxe message="" duration="1500"/>
+				<game:MessageToastDeluxe message="" image="effect_plop.png" duration="1" position="center center"/>
+				<game:MessageToastDeluxe message="" image="effect_awesome.png" duration="1" position="center center"/>
+				<game:MessageToastDeluxe message="Are you ok Render Manager?" speaker="Codi" image="BlauZaehne.png" duration="6000" position="end center"/>
+			</game:MessageToastStory>
+			<game:MessageToastStory id="intro4">
+				<game:MessageToastDeluxe message="" duration="1000"/>
+				<game:MessageToastDeluxe message="Must produce more controls to dominate the world!" speaker="Render Manager" image="RotRenderManagerDroht.png" duration="3000" position="begin center"/>
+				<game:MessageToastDeluxe message="" duration="3000"/>
+				<game:MessageToastDeluxe message="Oh crap, he is flushing millions of controls..." speaker="Prodi" image="GruenHoffnungsvoll.png" duration="3000" position="end center"/>
+			</game:MessageToastStory>
+			<game:MessageToastStory id="intro5">
+				<game:MessageToastDeluxe message="" duration="1000"/>
+				<game:MessageToastDeluxe message="We have to do something or he will make all apps unusable!" speaker="Scary" image="LilaDebatiert.png" duration="4000" position="begin center"/>
+				<game:MessageToastDeluxe message="Will you help us turn Render Manager back to normal again?" speaker="Scrummy" image="OrangeBefuerchtet.png" duration="3000" position="end center"/>
+			</game:MessageToastStory>
+		</dependents>
+	</Page>
+</mvc:View>

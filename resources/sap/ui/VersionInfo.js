@@ -1,0 +1,6 @@
+/*!
+ * OpenUI5
+ * (c) Copyright 2009-2019 SAP SE or an SAP affiliate company.
+ * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+ */
+sap.ui.define(["sap/base/util/LoaderExtensions"],function(r){"use strict";var n={};n.load=function(r){r=r||{};r.async=true;return n._load(r)};var e=null;n._load=function(i){if(typeof i!=="object"){i={library:i}}i.async=i.async===true;i.failOnError=i.failOnError!==false;if(!sap.ui.versioninfo){if(i.async&&e instanceof Promise){return e.then(function(){return n._load(i)})}var a=function(r){e=null;if(r===null){return undefined}sap.ui.versioninfo=r;return n._load(i)};var o=function(r){e=null;throw r};var s=r.loadResource("sap-ui-version.json",{async:i.async,failOnError:i.async||i.failOnError});if(s instanceof Promise){e=s;return s.then(a,o)}else{return a(s)}}else{var u;if(typeof i.library!=="undefined"){var f=sap.ui.versioninfo.libraries;if(f){for(var t=0,l=f.length;t<l;t++){if(f[t].name===i.library){u=f[t];break}}}}else{u=sap.ui.versioninfo}return i.async?Promise.resolve(u):u}};return n});

@@ -1,0 +1,1 @@
+sap.ui.define(["sap/ui/model/json/JSONModel","sap/ui/Device"],function(e,n){"use strict";var t="/sap.ui/custom/";return{createDeviceModel:function(){var t=new e(n);t.setDefaultBindingMode("OneWay");return t},createAppModel:function(n){var r=new e;["help","repo","contact"].forEach(function(e){var i=n.getManifestEntry(t+e);r.setProperty("/"+e,i)}.bind(this));return r}}});

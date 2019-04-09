@@ -1,0 +1,31 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<Dialog
+		id="Escape"
+		contentWidth="500px"
+		class="sapUiNoContentPadding"
+		title="{i18n>escapeTitle}">
+		<content>
+			<Image
+				width="90%"
+				src="{
+					path: 'appView>/chickenOut',
+					formatter: '.formatter.pictureUrl'
+				}"
+				class="creditsLogo sapUiTinyMarginBottom"/>
+		</content>
+		<beginButton>
+			<Button
+				type="Accept"
+				text="Leave"
+				press=".onLeave"/>
+		</beginButton>
+		<endButton>
+			<Button
+				type="Reject"
+				text="Stay"
+				press=".onStay"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,6 @@
+/*!
+ * OpenUI5
+ * (c) Copyright 2009-2019 SAP SE or an SAP affiliate company.
+ * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+ */
+sap.ui.define(["sap/ui/core/library","sap/m/HyphenationSupport"],function(t,e){"use strict";var a=t.TextAlign;var i=t.TitleLevel;var l={};l.render=function(t,l){var s=l._getTitle(),n=(s?s.getLevel():l.getLevel())||i.Auto,r=n==i.Auto,p=r?"div":n,o=e.getTextForRender(l,"main");t.openStart(p);t.controlData(l);t.class("sapMTitle");t.class("sapMTitleStyle"+(l.getTitleStyle()||i.Auto));t.class(l.getWrapping()?"sapMTitleWrap":"sapMTitleNoWrap");t.class("sapUiSelectable");var g=l.getWidth();if(!g){t.class("sapMTitleMaxWidth")}else{t.style("width",g)}var T=l.getTextAlign();if(T&&T!=a.Initial){t.class("sapMTitleAlign"+T)}if(l.getParent()instanceof sap.m.Toolbar){t.class("sapMTitleTB")}var c=s?s.getTooltip_AsString():l.getTooltip_AsString();if(c){t.attr("title",c)}if(r){t.attr("role","heading")}e.writeHyphenationClass(t,l);t.openEnd();t.openStart("span");t.attr("id",l.getId()+"-inner");t.openEnd();t.text(o);t.close("span");t.close(p)};return l},true);

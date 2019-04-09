@@ -1,0 +1,23 @@
+<mvc:View
+	controllerName="flush.controller.App"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core">
+	<Shell>
+		<App
+			id="app"
+			autoFocus="false"
+			class="flush"/>
+	</Shell>
+	<!-- special effects -->
+	<core:HTML
+		id="rain"
+		content="&lt;div id='rain' class='flush rain rainOuter'&gt;&lt;section&gt;&lt;/section&gt;&lt;/div&gt;"/>
+	<core:HTML
+		id="lightning"
+		content="&lt;div id='lightning' class='flush lightning flashit display-none'&gt;&lt;/div&gt;"/>
+	<core:HTML
+		id="snow"
+		content="&lt;canvas id='snow' class='flush snow display-none'&gt;&lt;/canvas &gt;"/>
+</mvc:View>

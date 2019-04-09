@@ -1,0 +1,415 @@
+/* Enter your custom styles here */
+
+/*remove the default highlight when you tap on an element using a mobile browser*/
+.flush *{
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	/* disable text selection */
+	-moz-user-select: -moz-none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+/* arcade machine styles */
+.flush .sapMPage{
+	background: linear-gradient(to bottom,#9dc0de, #2a4863);
+}
+
+.flush .sapMPage section {
+	border-left: 5px orange solid;
+	border-right: 5px orange solid;
+	width: calc(100% - 10px);
+}
+
+.flush .sapMIBar.sapMHeader-CTX,
+.flush .sapMPage .sapMPageHeader .sapMTB
+{
+	background-color: #1D3549;
+	box-shadow: inherit;
+	border: 1px solid #444;
+	border-bottom: 0;
+}
+
+.flush .flushLogo {
+	position: absolute;
+	top: -10px;
+	left: calc(50% - 150px);
+}
+
+.flush .sapMHeader-CTX .sapMBtnContent,
+.flush .sapMHeader-CTX .sapMBtnIcon,
+.flush .sapMHeader-CTX .sapMObjectNumber.sapMObjectNumberStatusNone,
+.flush .sapMHeader-CTX .sapMTitle{
+	color: #efefef !important;
+}
+
+/* hide the control manager */
+.flush .controlManager {
+	position: absolute;
+	left: -50000px;
+	height: 300px;
+}
+
+/* MessageToastDeluxe */
+.flush.sapMMessageToast {
+	overflow: visible;
+	min-height: 3rem;
+	font-size: 1.2rem;
+}
+
+.flush.sapMMessageToast.transparent {
+	padding: 0;
+	width: 0 !important;
+	height: 0;
+	min-height: 0;
+	box-shadow: initial
+}
+
+.flush .messageToastDeluxeImage {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+}
+
+.flush .messageToastDeluxeNumber {
+	color: black;
+	font-weight: bold;
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	font-size: 2.5rem;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	display: inline-block;
+	width: 200px;
+	text-align: center;
+	text-shadow: 0 0 10px white;
+}
+
+.flush .messageToastDeluxeNumber.negative {
+	color: red;
+}
+
+.display-none {
+	display: none !important;
+}
+
+.display-inline {
+	display: inline !important;
+}
+
+.centered {
+	text-align: center;
+}
+
+.flush canvas {
+	z-index: 1;
+	display: inline;
+}
+
+#debugCanvas {
+	z-index: 2;
+	display: none;
+}
+
+/* game tiles */
+.flush .gameTile .levelNumber {
+	display: inline-block;
+	text-align: center;
+	width: 100%;
+	font-size: 100px;
+	font-family: "Arial Black", Gadget, sans-serif;
+	line-height: 130px;
+}
+
+.flush .gameTile .levelName {
+	width: 100%;
+	display: inline-block;
+	position: relative;
+	top: -25px;
+	font-size: 20px;
+}
+
+.flush .gameTile {
+	width: 200px;
+	height: 200px;
+	background-color: #aadddd;
+	border: 3px solid cadetblue;
+	padding: 1rem;
+	margin: 1rem;
+	border-radius: 8px;
+
+	box-shadow: 0px 0px 80px #9E5FF;
+
+	width: 200px;
+	height: 200px;
+	background-color: #aadddd;
+	border: 5px solid cadetblue;
+	padding: 1rem;
+	margin: 1rem;
+	border-radius: 100px;
+	box-shadow: 0px 0px 40px #C9E5FF;
+	background: #f0f9ff;
+}
+
+.flush .gameTile.player1win {
+	background: #A7C3DC;
+}
+
+.flush .gameTile.player2win {
+	background: #FD8888;
+}
+
+.flush .gameTile .locker {
+	display: none;
+}
+
+.flush .gameTile.locked .locker {
+	display: block;
+}
+
+.flush .gameTile.locked .locker {
+	width: 190px;
+	height: 190px;
+	background-color: #A4CDDB;
+	border-radius: 150px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0.9;
+}
+
+.flush .gameTile .locker .sapUiIcon {
+	text-shadow: 0px 0px 50px darkcyan;
+}
+
+/* arcade board */
+.flush .arcadeControls {
+	width: 100%;
+	border-radius: 10px;
+	background: #192633;
+	width: calc(100% - 2rem);
+}
+
+.flush .arcadeControls.sapUiHLayout > .sapUiHLayoutChildWrapper:not(:last-child) {
+	padding-right: 0.5rem;
+}
+
+.flush .arcadeButton {
+	height: 3.8rem;
+}
+
+.flush .arcadeButton .sapMBtnInner {
+	width: 3.5rem;
+	height: 3.5rem;
+	line-height: 3rem;
+	font-size: 2rem;
+	border-radius: 50px;
+	border-width: 5px;
+}
+
+.flush .arcadeButton .sapMBtnContent {
+	line-height: 2.9rem;
+}
+
+.flush .arcadeButton.red .sapMBtnInner {
+	background: #e6600d; /* Old browsers */
+	background: -moz-linear-gradient(top, #e6600d 1%, #bb0000 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, #e6600d 1%,#bb0000 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, #e6600d 1%,#bb0000 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e6600d', endColorstr='#bb0000',GradientType=0 ); /* IE6-9 */
+	border-color: #bb0000;
+}
+
+.flush .arcadeButtonDirection .sapMBtnInner {
+	height: 3rem;
+	width: 3rem;
+	background: #2a4f6d; /* Old browsers */
+	background: -moz-linear-gradient(top, #2a4f6d 0%, #152736 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, #2a4f6d 0%,#152736 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, #2a4f6d 0%,#152736 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2a4f6d', endColorstr='#152736',GradientType=0 ); /* IE6-9 */
+	border-width: 2px;
+	margin-top: 4px;
+}
+
+.flush .arcadeButtonDirection > .sapMBtnInner.sapMBtnActive {
+	background: inherit;
+}
+
+.flush .arcadeButtonDirection .sapMBtnInner .sapMBtnIcon {
+	line-height: 3rem;
+}
+
+.flush .arcadeButton.yellow .sapMBtnInner {
+	background: #f9d625; /* Old browsers */
+	background: -moz-linear-gradient(top, #f9d625 1%, #f8ac29 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, #f9d625 1%,#f8ac29 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, #f9d625 1%,#f8ac29 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9d625', endColorstr='#f8ac29',GradientType=0 ); /* IE6-9 */
+	border-color: #de890d;
+}
+
+.flush .arcadeControls .sapUiHLayoutChildWrapper:last-child {
+	float: right;
+}
+
+.flush .arcadeControls .moodLabel {
+	color: white;
+	font-weight: bold;
+	font-size: 16px;
+	margin-top: 1.25rem;
+}
+
+.flush .progressGauge {
+	margin: 0;
+	margin-top: 5px;
+	background: #192633;
+}
+
+.flush .progressGauge .sapMPIBar {
+	background: #ff5454; /* Old browsers */
+	background-image: url('../images/gauge_bg.png');
+	border: 2px solid #418ac7;
+	height: 44px;
+	box-sizing: border-box;
+}
+
+.flush .progressGauge .sapMPIBarRemaining {
+	border: 2px solid #418ac7;
+	background-color: black;
+	border-left: 0;
+	height: 44px;
+	box-sizing: border-box;
+}
+
+.flush .progressGauge .sapMPIText {
+	text-shadow: 0px 0px 5px #1D3549;
+	font-size: 1rem;
+	color: white;
+}
+
+/* multi player gauges */
+.flush .multiPlayerControls > div:first-child {
+	width: 258px;
+}
+
+.flush .multiPlayerControls > div:nth-child(3) {
+	width: 250px;
+	text-align: right;
+}
+
+.flush .multiPlayerControls .energyBar .sapMPIBar {
+	background: #ff5454; /* Old browsers */
+	background-image: url('../images/energy_bg.png');
+	border: 2px solid #275EFF;
+	box-sizing: border-box;
+	height: 24px;
+}
+
+.flush .multiPlayerControls .energyBar .sapMPIText {
+	text-shadow: 0px 0px 5px #1D3549;
+	font-size: 1rem;
+	color: white;
+}
+
+.flush .multiPlayerControls .energyBar .sapMPIBarRemaining {
+	border: 2px solid #418ac7;
+	background-color: black;
+	border-left: 0;
+	box-sizing: border-box;
+	height: 24px;
+}
+
+.flush .multiPlayerControls .lifeBar {
+	min-height: 63px;
+}
+
+/* credits */
+.creditsLogo {
+	display: block;
+	margin: auto;
+}
+
+/* rain: https://codepen.io/alemesre/pen/hAxGg */
+.rain {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.rainOuter {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	pointer-events: none;
+}
+
+.drop {
+	background:-webkit-gradient(linear,0% 0%,0% 100%, from(rgba(13,52,58,0) ), to(rgba(255,255,255,0.6))  );
+	background: -moz-linear-gradient(top, rgba(13,52,58,1) 0%, rgba(255,255,255,.6) 100%);
+	width:2px;
+	height:89px;
+	position: absolute;
+	bottom:200px;
+	-webkit-animation: fall .63s linear infinite;
+	-moz-animation: fall .63s linear infinite;
+}
+
+/* animate the drops*/
+@-webkit-keyframes fall {
+	to {margin-top:900px;}
+}
+@-moz-keyframes fall {
+	to {margin-top:900px;}
+}
+
+/* flash: https://codepen.io/Chrislion_me/pen/rVqwbO */
+.lightning{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(200,255,255,0.5);
+	pointer-events: none;
+}
+
+.flashit{
+	-webkit-animation: flash ease-out 10s infinite;
+	-moz-animation: flash ease-out 10s infinite;
+	animation: flash ease-out 10s infinite;
+	animation-delay: 0s;
+}
+
+@-webkit-keyframes flash {
+	from { opacity: 0; }
+	92.5% { opacity: 0; }
+	93% { opacity: 0.6; }
+	93.5% { opacity: 0.2; }
+	94% { opacity: 0.9; }
+	to { opacity: 0; }
+}
+
+@keyframes flash {
+	from { opacity: 0; }
+	92.5% { opacity: 0; }
+	93% { opacity: 0.6; }
+	93.5% { opacity: 0.2; }
+	94% { opacity: 1; }
+	to { opacity: 0; }
+}
+
+/* snow: https://codepen.io/pimskie/pen/jEVPNx */
+.flush.snow {
+	z-index: 1;
+	display: inline;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+}
