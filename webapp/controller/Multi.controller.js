@@ -107,6 +107,7 @@ sap.ui.define([
 				} else {
 					// only show intro story when no match was won before
 					// navTo is also called async after winning to update the hash
+					this.getModel("appView").setProperty("/fromGame", false);
 					if (!this._bMatchWon) {
 						this._playStory("intro").then(fnPlayRandomQuotes);
 					}

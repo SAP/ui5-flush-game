@@ -10,7 +10,7 @@ sap.ui.define([
 		formatter: formatter,
 
 		/**
-		 * Sets up the honme screen
+		 * Sets up the home screen
 		 */
 		onInit: function () {
 			BaseController.prototype.onInit.apply(this, arguments);
@@ -21,7 +21,6 @@ sap.ui.define([
 			this.setModel(oViewModel, "view");
 			// attach to routing events
 			this.getRouter().getRoute("home").attachPatternMatched(this._onNavigation, this);
-			this.getRouter().getTarget("home").attachDisplay(this._onNavigation, this);
 			// clear idle timer when navigating away
 			this.getRouter().attachRouteMatched(function (oEvent) {
 				var sRoute = oEvent.getParameter("name");
@@ -63,7 +62,7 @@ sap.ui.define([
 		 * Update the game state after a level has been finished
 		 * @private
 		 */
-		_updateGame: function () {
+		_updateGame: function (oEvent) {
 			this.getModel("appView").setProperty("/mode", "1player");
 			this.ready().then(function () {
 				var iTotalScore = Math.min(this.getModel("appView").getProperty("/score"), 10000),
@@ -85,16 +84,21 @@ sap.ui.define([
 				var iMood = 100 - Math.max(0, iTotalScore) / 100;
 				this.getModel("appView").setProperty("/mood", iMood);
 
+				var bFromGame = this.getModel("appView").getProperty("/fromGame");
 
-				var bFromIntro = this.getModel("appView").getProperty("/fromIntro");
-
-				if (iTotalScore < 0 || iOldMood !== iMood && iMood !== 0 && !bFromIntro) {
+				if (bFromGame) {
 					if (iOldMood - iMood > 0) {
 						// unlock one more level
 						this.getModel("appView").setProperty("/progress", this.getModel("appView").getProperty("/progress") + 1);
 						this._playStory("lucky").then(fnPlayRandomQuotes);
 						this.getSoundManager().play("Win").then(function () {
 							this.getSoundManager().play("roboWin");
+						}.bind(this));
+					} else if (iOldMood - iMood === 0) {
+						// mock player
+						this._playStory("n00b").then(fnPlayRandomQuotes);
+						this.getSoundManager().play("Loose").then(function () {
+							this.getSoundManager().play("roboLoose");
 						}.bind(this));
 					} else {
 						// insult player
@@ -110,7 +114,7 @@ sap.ui.define([
 						this._bLockedAfterLevel = false;
 					}.bind(this), 3000);
 				} else {
-					this.getModel("appView").setProperty("/fromIntro", false);
+					this.getModel("appView").setProperty("/fromGame", false);
 					this._playStory("intro").then(fnPlayRandomQuotes);
 				}
 			}.bind(this));

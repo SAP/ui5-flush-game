@@ -188,6 +188,11 @@
 				<game:MessageToastDeluxe message="Wow, i feel much better now, thanks!" speaker="Render Manager" image="RotRenderManagerDroht.png" duration="5000" position="center center"/>
 				<game:MessageToastDeluxe message="" duration="5000"/>
 			</game:MessageToastStory>
+			<game:MessageToastStory id="n00b">
+				<game:MessageToastDeluxe message="" duration="2000"/>
+				<game:MessageToastDeluxe message="Really, you scored absolutely no points? Try an easier game maybe..." speaker="Render Manager" image="RotRenderManagerDroht.png" duration="5000" position="center center"/>
+				<game:MessageToastDeluxe message="" duration="5000"/>
+			</game:MessageToastStory>
 			<game:MessageToastStory id="fool">
 				<game:MessageToastDeluxe message="" duration="2000"/>
 				<game:MessageToastDeluxe message="Seriously? That made my mood even worse, try harder!" speaker="Render Manager" image="RotRenderManagerDroht.png" duration="5000" position="center center"/>

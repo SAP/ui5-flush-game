@@ -253,7 +253,6 @@ sap.ui.define([
 			this._bIntroPlaying = false;
 			this.getModel("appView").setProperty("/mood", 100);
 			this.getSoundManager().stopAllSounds();
-			this.getModel("appView").setProperty("/fromIntro", true);
 			this.getRouter().navTo("home");
 		},
 

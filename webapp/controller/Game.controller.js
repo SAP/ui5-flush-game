@@ -118,6 +118,7 @@ sap.ui.define([
 		 */
 		onLevelEnd: function (oEvent) {
 			clearInterval(this._iInterval);
+			this.getModel("appView").setProperty("/fromGame", true);
 			this.getModel("view").setProperty("/instructions", "");
 			// go to single or multiplayer mode home depending on current level
 			if (this.getModel("view").getProperty("/multi")) {
