@@ -150,21 +150,16 @@ sap.ui.define([
 
 			// Create background skylines.
 			var oBackgroundImages = {
-				//"1": "bgSpinne",
-				//"2": "bgWolkenkratzer",
-				//"3": "bgSkyline",
-				//"4": "bgUI5",
-				//"5": "bgBaeume"
-
-				// Background Images for TechEd in Las Vegas
 				"1": "bgLasVegas",
-				"2": "bgUI5",
-				"3": "bgSkyline",
-				"4": "bgWolkenkratzer",
-				"5": "bgBaeume"
+				"2": "bgBarcelona",
+				"3": "bgUI5",
+				"4": "bgSkyline",
+				"5": "bgWolkenkratzer",
+				"6": "bgBaeume",
+				"7": "bgSpinne"
 			};
 
-			var sBg = oBackgroundImages[random.getInt(1, 5).toString()];
+			var sBg = oBackgroundImages[random.getInt(1, 8).toString()];
 			var imgSkyline = oAssetLoader.getResult(sBg);
 
 			var oSkylineProperties = {
