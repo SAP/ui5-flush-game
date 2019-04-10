@@ -32,7 +32,7 @@
 			<game:MessageToastStory id="intro0">
 				<game:MessageToastDeluxe message="" duration="2000"/>
 				<game:MessageToastDeluxe message="UI5 presents" duration="2000" position="600 425"/>
-				<game:MessageToastDeluxe message="" image="flush_logo_xl.png" duration="3000" position="635 500"/>
+				<game:MessageToastDeluxe message="" image="flush_logo_xl.png" duration="3000" position="635 425"/>
 			</game:MessageToastStory>
 			<game:MessageToastStory id="intro1">
 				<game:MessageToastDeluxe message="" duration="1000"/>
