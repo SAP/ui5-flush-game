@@ -54,7 +54,7 @@ sap.ui.define([
 				"player2Energy": {
 					type: "float",
 					defaultValue: 0
-				},
+				}
 			},
 			events: {
 				/* fired when the level is initialized */
@@ -96,6 +96,15 @@ sap.ui.define([
 				content: '<canvas width="1270px" height="720px" style="display:none"></canvas>'
 			});
 			this.addContent(oDebugCanvas);
+		},
+
+		setLevel: function(sLevel){
+			// update value property
+			if (sLevel){
+				this.setProperty("level", sLevel);
+				this._loadLevel();
+			}
+			return this;
 		},
 
 		/**
@@ -176,7 +185,7 @@ sap.ui.define([
 					var iLifesPlayer2 = Math.max(0, this.getProperty("player2Lives"));
 					if (iLifesPlayer1 !== iLifesPlayer2) {
 						// player with more life wins
-						var iWinner= (iLifesPlayer1 > iLifesPlayer2 ? 1 : 2);
+						var iWinner = (iLifesPlayer1 > iLifesPlayer2 ? 1 : 2);
 						this.fireEnd({
 							who: iWinner
 						});
@@ -287,7 +296,7 @@ sap.ui.define([
 		 */
 		triggerEvent: function (sWhich, iValue, aWhere) {
 			// choose effect
-			switch(sWhich) {
+			switch (sWhich) {
 				case "start":
 					oSprite = new MessageToastDeluxe({
 						number: "Fight!",
@@ -479,14 +488,13 @@ sap.ui.define([
 			// add a custom game-dependent style class
 			this.addStyleClass(this.getLevel());
 		},
-
 		/**
 		 * Transforms the canvas element to a game area
 		 */
 		onAfterRendering: function () {
 			// bug: only works with timeout in FLP sandbox
-			setTimeout(function () {
-				this._loadLevel();
+
+			setTimeout(function(){
 				this.focus();
 			}.bind(this), 0);
 		},
@@ -508,7 +516,7 @@ sap.ui.define([
 				iDifficulty = this.getDifficulty();
 
 			var fnInit = function () {
-				sap.ui.require(["flush/game/levels/" + this.getProperty("level") + "/Level"], function (Level) {
+				sap.ui.require(["flush/game/levels/" + sLevel + "/Level"], function (Level) {
 					var oController = this.getParent();
 					var oCanvas = oController.byId(this.getId() + "-canvas");
 					var oCanvasDebug = sap.ui.getCore().byId("debugCanvas");
@@ -542,7 +550,9 @@ sap.ui.define([
 				clearTimeout(this._iLevelTimer);
 				this._oLevel.exit().then(function () {
 					this._oLevel.destroy();
-					fnInit();
+					setTimeout(function(){
+						fnInit();
+					}, 0);
 				}.bind(this));
 			} else {
 				fnInit();
@@ -582,7 +592,7 @@ sap.ui.define([
 		} else {
 			fnOrigInvalidate.apply(this, arguments);
 		}
-	}
+	};
 
 	return oGame;
 

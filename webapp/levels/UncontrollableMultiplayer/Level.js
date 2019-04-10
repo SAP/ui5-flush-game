@@ -23,7 +23,7 @@ sap.ui.define([
 		[0, 0]
 	];
 
-	return UI5Object.extend("flush.levels.demo", {
+	return UI5Object.extend("flush.game.levels.UncontrollableMultiplayer", {
 
 		/**
 		 * Connect the game and the canvas to the level
@@ -84,7 +84,7 @@ sap.ui.define([
 								this.oGame.hit(iPlayer);
 							}
 							this.oGame.getSoundManager().play("goodHit");
-							this.getSoundManager().play("badHit");
+							this.oGame.getSoundManager().play("badHit");
 							this.oGame.getSoundManager().play("hammer");
 						}
 					}

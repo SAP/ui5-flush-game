@@ -3,7 +3,7 @@ sap.ui.define([
 	"sap/ui/model/json/JSONModel",
 	"../controls/MessageToastDeluxe",
 	"../model/formatter",
-	"sap/base/util/UriParameters",
+	"sap/base/util/UriParameters"
 ], function (BaseController, JSONModel, MessageToastDeluxe, formatter, UriParameters) {
 	"use strict";
 
@@ -35,7 +35,7 @@ sap.ui.define([
 			});
 			this.setModel(oViewModel, "view");
 
-			this.getRouter().getRoute("game").attachPatternMatched(this._loadLevel, this);
+			this.getRouter().getRoute("game").attachPatternMatched(this._setLevelSettings, this);
 		},
 
 		/**
@@ -43,49 +43,54 @@ sap.ui.define([
 		 * @param {sap.ui.base.Event} oEvent the routing event
 		 * @private
 		 */
-		_loadLevel: function (oEvent) {
+		_setLevelSettings: function (oEvent) {
 			var oArguments = oEvent.getParameter("arguments");
+			var oModel = this.getModel("view");
 
 			// set level parameters
-			this.getModel("view").setProperty("/busy", true);
-			this.getModel("view").setProperty("/level", oArguments.level);
-			this.getModel("view").setProperty("/difficulty", parseInt(oArguments.difficulty));
-			this.getModel("view").setProperty("/multi", /multi/i.test(oArguments.level));
+			oModel.setProperty("/busy", true);
+			oModel.setProperty("/level", oArguments.level, null, true);
+			oModel.setProperty("/difficulty", parseInt(oArguments.difficulty), null, true);
+			oModel.setProperty("/multi", /multi/i.test(oArguments.level), null, true);
 
 			// update level instructions
-			this.getModel("view").setProperty("/instructions", this.getResourceBundle().getText("gameInstructions" + oArguments.level));
+			oModel.setProperty("/instructions", this.getResourceBundle().getText("gameInstructions" + oArguments.level), null, true);
 
 			// set level-specific time limit
 			if (oArguments.level === "WhackABug") {
-				this.getModel("view").setProperty("/timeLimit", 45);
+				oModel.setProperty("/timeLimit", 45, null, true);
 			} else if (oArguments.level === "Uncontrollable") {
-				this.getModel("view").setProperty("/timeLimit", 60);
+				oModel.setProperty("/timeLimit", 60, null, true);
 			} else if (oArguments.level === "UncontrollableMultiplayer") {
-				this.getModel("view").setProperty("/timeLimit", 60);
+				oModel.setProperty("/timeLimit", 60, null, true);
 			} else if (oArguments.level === "PlopARobot") {
-				this.getModel("view").setProperty("/timeLimit", 30);
+				oModel.setProperty("/timeLimit", 30, null, true);
 			}
 
 			// reset time limit and display special canvas for debugging
 			var oUriParameters = new UriParameters(window.location.href);
 
 			if (oUriParameters.get("game-debug")) {
-				this.getModel("view").setProperty("/timeLimit", 999999);
-				this.getModel("view").setProperty("/debug", true);
+				oModel.setProperty("/timeLimit", 999999, null, true);
+				oModel.setProperty("/debug", true, null, true);
 			}
 
 			// update page title
-			this.getModel("view").setProperty("/title", this.getResourceBundle().getText("gameTitleLevel", [this.getModel("view").getProperty("/level"), this.getModel("view").getProperty("/difficulty")]));
+			oModel.setProperty("/title", this.getResourceBundle().getText("gameTitleLevel", [oArguments.level, oArguments.difficulty]), null, true);
 
 			// force re-rendering also when going to the same level again
 			this.byId("page").invalidate();
 
 			// play game story
-			this._playStory(this.getModel("view").getProperty("/level"));
+			this._playStory(oArguments.level);
 
 			// play level sound
 			this.getSoundManager().stop("Level");
 			this.getSoundManager().play("Level");
+
+			// Forces an update of all async model changes above
+			// Is used to limit the number rerendering of the game control
+			oModel.refresh(true);
 		},
 
 		/**

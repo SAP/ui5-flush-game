@@ -12,7 +12,7 @@ sap.ui.define([
 	var KEYBOARD_STEP = 25;
 	var KEYBOARD_FREQUENCY = 20;
 
-	return UI5Object.extend("flush.levels.whackabug", {
+	return UI5Object.extend("flush.game.levels.WhackABug", {
 
 		/**
 		 * Connect the game and the canvas to the level
