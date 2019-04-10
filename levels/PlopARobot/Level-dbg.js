@@ -27,7 +27,7 @@ sap.ui.define([
 	var SCALE = 0.7;
 	var ballDefs, spriteSheet, ballsToRemove, count, world;
 
-	return UI5Object.extend("flush.levels.plop", {
+	return UI5Object.extend("flush.game.levels.PlopARobot", {
 
 		/**
 		 * Connect the game and the canvas to the level

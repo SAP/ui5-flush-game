@@ -461,7 +461,7 @@ sap.ui.define([
 		};
 	})();
 
-	return UI5Object.extend("flush.levels.demo", {
+	return UI5Object.extend("flush.game.levels.Uncontrollable", {
 
 		/**
 		 * Connect the game and the canvas to the level

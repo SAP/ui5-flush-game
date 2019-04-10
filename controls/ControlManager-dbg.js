@@ -27,12 +27,13 @@ sap.ui.define([
 
 		/**
 		 * Creates images for all controls in the content aggregatipon
+		 * @param {boolean} [bForceUpdate] forces an update of all images
 		 * @return {Promise} a promise to be resolved when all images are created
 		 */
-		updateAllControlImages: function() {
+		updateAllControlImages: function(bForceUpdate) {
 			var pAllControlImagesUpdated = [];
 			this.getContent().forEach(function(oControl) {
-				pAllControlImagesUpdated.push(this.updateControlImage(oControl));
+				pAllControlImagesUpdated.push(this.updateControlImage(oControl), bForceUpdate);
 			}.bind(this));
 			return Promise.all(pAllControlImagesUpdated);
 		},
@@ -40,35 +41,39 @@ sap.ui.define([
 		/**
 		 * Differences of html2canvas to domtoimage: https://github.com/tsayen/dom-to-image/issues/100
 		 * Comparing performance: domtoimage (2.6s) is much faster than html2canvas (4.7s) for 7 controls
+		 * @param {sap.ui.core.Control} control instance
+		 * @param {boolean} [bForceUpdate] forces an update of the control image
 		 */
-		updateControlImage: function(oControl) {
+		updateControlImage: function(oControl, bForceUpdate) {
 			if (!oControl || !oControl.getDomRef()) {
 				Log.info("There are controls with no DOMRef!");
 				return Promise.resolve();
 			} else {
-				//available since 1.56
 				if (oControl.setBlocked){
 					oControl.setBlocked(false);
 				}
-				return domtoimage.toPngCacheId(oControl.getDomRef()).then(function(dataUrl) {
-					oControl._dataUrl = dataUrl;
-					var image = new Image();
-					image.src = dataUrl;
-					oControl._image = image;
-					//available since 1.56
-					if (oControl.setBlocked){
-						oControl.setBlocked(true);
-					}
-				}).then(function(){
-					return domtoimage.toPngCacheId(oControl.getDomRef(), undefined, "Blocked").then(function(dataUrlBlocked) {
-						oControl._dataUrlBlocked = dataUrlBlocked;
+				if (!oControl._image || bForceUpdate){
+					return domtoimage.toPngCacheId(oControl.getDomRef()).then(function(dataUrl) {
+						oControl._dataUrl = dataUrl;
 						var image = new Image();
-						image.src = dataUrlBlocked;
-						oControl._imageBlocked = image;
+						image.src = dataUrl;
+						oControl._image = image;
+						if (oControl.setBlocked){
+							oControl.setBlocked(true);
+						}
+					}).then(function(){
+						return domtoimage.toPngCacheId(oControl.getDomRef(), undefined, "Blocked").then(function(dataUrlBlocked) {
+							oControl._dataUrlBlocked = dataUrlBlocked;
+							var image = new Image();
+							image.src = dataUrlBlocked;
+							oControl._imageBlocked = image;
+						});
+					}).catch(function(error) {
+						Log.error('oops, something went wrong!', error);
 					});
-				}).catch(function(error) {
-					Log.error('oops, something went wrong!', error);
-				});
+				} else {
+					return Promise.resolve();
+				}
 			}
 		},
 
