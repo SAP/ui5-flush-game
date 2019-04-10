@@ -42,7 +42,7 @@ To report a bug, please open an issue.
 
 ## Contributing
 
-We welcome your contributions. Please get in touch with us in the `#flush` channel of the [OpenUI5 Community Slack](https://ui5-slack-invite.cfapps.eu10.hana.ondemand.com/).
+We welcome your contributions. Please get in touch with us in the [#flush](https://openui5.slack.com/messages/CHV1YCNG6) channel of the [OpenUI5 Community Slack](https://ui5-slack-invite.cfapps.eu10.hana.ondemand.com/).
 
 ## Thirdparty
 
