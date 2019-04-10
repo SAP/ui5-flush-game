@@ -8,9 +8,10 @@ The game was created using the following thirdparty libraries
 | CreateJS         | http://createjs.com/                   | MIT        |
 | balls            | https://github.com/CreateJS/sandbox/tree/master/EaselJS_Box2dWeb | MIT        |
 | dom-to-image     | https://github.com/tsayen/dom-to-image | MIT        |
+| eslint           | https://github.com/eslint/eslint       | MIT        |
+| github-corners   | https://github.com/tholman/github-corners       | MIT        |
 | openUI5          | https://github.com/SAP/openui5         | Apache 2.0 |
 | @ui5/cli         | https://github.com/SAP/ui5-cli         | Apache 2.0 |
-| eslint           | https://github.com/eslint/eslint       | MIT        |
 | Animate.css      | https://github.com/daneden/animate.css | MIT        |
 
 Recommended software for using game pads or arcade joysticks.
