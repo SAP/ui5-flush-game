@@ -4,10 +4,7 @@
   "description": "Flush! Defeat the evil Render Manager",
   "private": true,
   "scripts": {
-    "start": "ui5 serve --open index.html",
-    "dev": "ui5 serve --open index_local.html",
-    "start-mac": "open http://localhost:8081/index.html & ui5 serve",
-    "dev-mac": "open http://localhost:8081/index_local.html & ui5 serve"
+    "start": "ui5 serve --open index.html"
   },
   "dependencies": {
     "@openui5/sap.m": "^1",

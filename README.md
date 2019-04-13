@@ -1,3 +1,5 @@
+<p align="center"><img src="media/header.jpg" width="300" height="200" /></p>
+
 # Flush! Defeat the Evil Render Manager
 
 An innovative and fun game combining [OpenUI5](https://github.com/SAP/openui5) and [CreateJS](https://createjs.com/) to showcase real-time and interaction capabilities of UI5 technology. Browse the source code to look behind the scenes or play the game to see Flush! in action.
@@ -6,23 +8,7 @@ An innovative and fun game combining [OpenUI5](https://github.com/SAP/openui5) a
 
 ## How to Play
 
-![Flush! Manual](media/manual.png)
-
-> **Note:** Follow the in-game instructions or check the [input control](InputControl.md) page for more details. Flush! can also be played with game pads or custom game controllers.
-
-## Requirements
-
-The [git client](https://git-scm.com/) and [Node.js](https://nodejs.org/) must be installed.
-
-## Download and Installation
-
-To run a local instance of the game, follow these simple setup steps:
-
-1. Clone this repository
-
-2. Install npm dependencies with `npm install`
-
-3. Run the game with `npm start`
+Follow the in-game instructions or check the [input control](InputControl.md) page for more details. Flush! can also be played with game pads or custom game controllers.
 
 ## Background Information
 
@@ -36,22 +22,28 @@ Flush! is an innovation project that brings together Web app capabilities of Ope
 
 We leverage the enterprise-grade UI5 technology with custom controls, custom theming, sprite effects, game mechanics, and scripted levels to create a unique browser game.
 
-## Support
+## How to support & contribute
+To report a bug, please open an issue and we also welcome your contributions. Please get in touch with us in the [#flush](https://openui5.slack.com/messages/CHV1YCNG6) channel of the [OpenUI5 Community Slack](https://ui5-slack-invite.cfapps.eu10.hana.ondemand.com/).
 
-To report a bug, please open an issue.
+### Download and Installation
+**Requirements**: NodeJS
 
-## Contributing
+To run a local instance of the game, follow these simple setup steps:
 
-We welcome your contributions. Please get in touch with us in the [#flush](https://openui5.slack.com/messages/CHV1YCNG6) channel of the [OpenUI5 Community Slack](https://ui5-slack-invite.cfapps.eu10.hana.ondemand.com/).
+1. Clone this repository
 
-## Thirdparty
+2. Install npm dependencies with `npm install`
+
+3. Run the game with `npm start`
+
+### Thirdparty
 
 The following media assets and thirdparty libraries were used in this project:
 
 * [Credits and Attribution for sounds used in the game](SoundCredits.md)
 * [List of thirdparty libraries and recommended sofware](Thirdparty.md)
 
-## License
+### License
 
 Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
 This file is licensed under the Apache Software License, v.2 except as noted otherwise in the [LICENSE](/LICENSE) file.
@@ -59,5 +51,3 @@ This file is licensed under the Apache Software License, v.2 except as noted oth
 Have fun playing the game!
 
 **The Flush! Team**
-
-

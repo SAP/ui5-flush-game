@@ -1,16 +1,18 @@
 # Input Control
+<img src="media/manual.png" data-canonical-src="media/manual.png" width="400" height="500" />
 
 This page contains detailed instructions about the game input control and key mappings.
 If you like to use game pads or other types of game controllers, please check the corresponding sections below.
 
-# Mouse Input
+## Mouse Input
 
 Some levels (WhackABug and PlopARobot) can be played with mouse and keyboard input.
 Mouse move and click events are triggering the same events as keyboard input.
 
-Uncontrollable and UncontrollableMultiplayer are keyboard-only levels.
+The levels Uncontrollable and UncontrollableMultiplayer are keyboard-only levels.
 
-# Keyboard Input
+
+## Keyboard Input
 
 The keyboard setup is a basic game configuration for two players using one shared keyboard.
 Player 1 uses WASD and Player 2 uses the ARROW keys to move. Action buttons are configured close to the movement keys for maximum convenience.
@@ -37,7 +39,7 @@ When Game Pads or arcade controllers are used, the input can be mapped to the co
 |Player 1/2 start|ESC|Reset|
 |Player 1/2 select|3|Switch Game Mode|
 
-# Game Pad Controllers (2 Player Game Lounge Setup)
+## Game Pad Controllers (2 Player Game Lounge Setup)
 
 ![Game Pad](media/GamePad.jpg)
 
@@ -56,7 +58,7 @@ When Game Pads or arcade controllers are used, the input can be mapped to the co
 > Note: JoyToKey is a shareware and license key (price = $7.00 USD) needs to be purchased for continued use.
 
 
-# Using an IPAC Arcade Controller (Custom Mame Controller Setup)
+## Using an IPAC Arcade Controller (Custom Mame Controller Setup)
 
 ![Game Pad](media/ArcadeBoard.jpg)
 
