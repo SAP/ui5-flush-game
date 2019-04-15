@@ -1,3 +1,7 @@
+# Flush! is now open source (Yay!)
+
+This repository is an internal archive, please don't use it anymore and go to: https://github.com/SAP/ui5-flush-game
+
 # Flush! Defeat the Evil Render Manager
 
 An innovative and fun game combining [OpenUI5](https://github.com/SAP/openui5) and [CreateJS](https://createjs.com/) to showcase real-time and interaction capabilities of UI5 technology. Browse the source code to look behind the scenes or play the game to see Flush! in action.
