@@ -1,8 +1,11 @@
 # Input Control
-<img src="media/manual.png" data-canonical-src="media/manual.png" width="400" height="500" />
 
 This page contains detailed instructions about the game input control and key mappings.
 If you like to use game pads or other types of game controllers, please check the corresponding sections below.
+
+## Game Manual
+
+![Flush! Manual](media/manual.png)
 
 ## Mouse Input
 

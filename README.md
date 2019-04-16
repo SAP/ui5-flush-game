@@ -1,4 +1,4 @@
-<p align="center"><img src="media/header.jpg" width="603" height="328" /></p>
+![Flush! Manual](media/header.jpg)
 
 # Flush! Defeat the Evil Render Manager
 
@@ -8,7 +8,9 @@ An innovative and fun game combining [OpenUI5](https://github.com/SAP/openui5) a
 
 ## How to Play
 
-Follow the in-game instructions or check the [input control](InputControl.md) page for more details. Flush! can also be played with game pads or custom game controllers.
+Flush! can be played in single player or two player mode. Use your mouse or keyboard to score points.
+Follow the in-game instructions or check the [input control](InputControl.md) page for more details.
+The game can also be played with game pads or custom game controllers.
 
 ## Background Information
 
@@ -22,11 +24,17 @@ Flush! is an innovation project that brings together Web app capabilities of Ope
 
 We leverage the enterprise-grade UI5 technology with custom controls, custom theming, sprite effects, game mechanics, and scripted levels to create a unique browser game.
 
-## How to support & contribute
-To report a bug, please open an issue and we also welcome your contributions. Please get in touch with us in the [#flush](https://openui5.slack.com/messages/CHV1YCNG6) channel of the [OpenUI5 Community Slack](https://ui5-slack-invite.cfapps.eu10.hana.ondemand.com/).
+## Support
 
-### Download and Installation
-**Requirements**: NodeJS
+To report a bug, please open an issue.
+
+## Contributing
+
+We welcome your contributions. Please get in touch with us in the [#flush](https://openui5.slack.com/messages/CHV1YCNG6) channel of the [OpenUI5 Community Slack](https://ui5-slack-invite.cfapps.eu10.hana.ondemand.com/).
+
+## Download and Installation
+
+> *Requirements:* The [git client](https://git-scm.com/) and [Node.js](https://nodejs.org/) must be installed.
 
 To run a local instance of the game, follow these simple setup steps:
 
@@ -36,14 +44,14 @@ To run a local instance of the game, follow these simple setup steps:
 
 3. Run the game with `npm start`
 
-### Thirdparty
+## Thirdparty
 
 The following media assets and thirdparty libraries were used in this project:
 
 * [Credits and Attribution for sounds used in the game](SoundCredits.md)
 * [List of thirdparty libraries and recommended sofware](Thirdparty.md)
 
-### License
+## License
 
 Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
 This file is licensed under the Apache Software License, v.2 except as noted otherwise in the [LICENSE](/LICENSE) file.
