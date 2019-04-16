@@ -1,4 +1,4 @@
-<p align="center"><img src="media/header.jpg" width="300" height="200" /></p>
+<p align="center"><img src="media/header.jpg" width="603" height="328" /></p>
 
 # Flush! Defeat the Evil Render Manager
 
