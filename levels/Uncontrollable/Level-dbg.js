@@ -356,8 +356,16 @@ sap.ui.define([
 			this._movement = [0, 0];
 
 			// sync keyboard
-			document.addEventListener("keydown", this.fnKeyDown);
-			document.addEventListener("keyup", this.fnKeyUp);
+			document.addEventListener("keydown", fnKeyDown);
+			document.addEventListener("keyup", fnKeyUp);
+
+			// sync mouse
+			canvas.addEventListener("mousedown", fnMouseDown);
+			canvas.addEventListener("mousemove", fnMouseMove);
+			canvas.addEventListener("mouseup", fnMouseUp);
+			canvas.addEventListener("touchdown", fnMouseDown);
+			canvas.addEventListener("touchmove", fnMouseDown);
+			canvas.addEventListener("touchend", fnMouseUp);
 
 			// sync mouse
 			canvas.addEventListener("mousedown", fnMouseDown);
