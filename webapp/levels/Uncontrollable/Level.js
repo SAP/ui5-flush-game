@@ -356,8 +356,8 @@ sap.ui.define([
 			this._movement = [0, 0];
 
 			// sync keyboard
-			document.addEventListener("keydown", this.fnKeyDown);
-			document.addEventListener("keyup", this.fnKeyUp);
+			document.addEventListener("keydown", fnKeyDown);
+			document.addEventListener("keyup", fnKeyUp);
 
 			// sync mouse
 			canvas.addEventListener("mousedown", fnMouseDown);

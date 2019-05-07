@@ -226,7 +226,7 @@ html, body {
 
 .sap-desktop .flush .arcadeControls.sapUiHLayout > .sapUiHLayoutChildWrapper:nth-child(2),
 .sap-tablet .flush .arcadeControls.sapUiHLayout > .sapUiHLayoutChildWrapper:nth-child(2) {
-	width: calc(100% - 601px);
+	width: calc(100% - 636px);
 	min-width: 200px;
 }
 
@@ -239,6 +239,7 @@ html, body {
 
 .flush .arcadeButton {
 	height: 3.8rem;
+	margin-right: 6px;
 }
 
 .flush .arcadeButton .sapMBtnInner {
@@ -252,6 +253,10 @@ html, body {
 
 .flush .arcadeButton .sapMBtnContent {
 	line-height: 2.9rem;
+}
+
+.flush .arcadeButtonDirection {
+	margin-right: 6px;
 }
 
 .flush .arcadeButton.red .sapMBtnInner {
