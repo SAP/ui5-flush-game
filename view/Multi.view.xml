@@ -29,7 +29,9 @@
 
 		</headerContent>
 		<content>
-			<TileContainer id="levels" height="720px">
+			<TileContainer
+				id="levels"
+				height="{= ${device>/system/desktop} ? '720px' : 'calc(100% - 4.5rem)'}">
 				<game:GameTile press=".onLevel">
 					<game:content>
 						<layout:VerticalLayout width="100%">

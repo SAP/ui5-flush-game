@@ -16,21 +16,22 @@
 		</headerContent>
 		<content>
 			<Image src="{
-				path: 'view>/outro',
-				formatter: '.formatter.pictureUrl'
-			}"
-			height="720px"/>
+					path: 'view>/outro',
+					formatter: '.formatter.pictureUrl'
+				}"
+				width="{= ${device>/system/desktop} ? 'inherit' : '100%'}"
+				height="{= ${device>/system/desktop} ? '720px' : 'inherit'}"/>
 			<core:Fragment id="arcadeBoard" fragmentName="flush.game.view.ArcadeBoard" type="XML"/>
 		</content>
 		<dependents>
 			<game:MessageToastStory id="outro">
 				<game:MessageToastDeluxe message="" duration="2000"/>
-				<game:MessageToastDeluxe message="Congratulations! You have defeated the evil Render Manager and rescued us, you are truly a brave robot" speaker="Scary" image="LilaDebatiert.png" duration="5000" position="635 600"/>
+				<game:MessageToastDeluxe message="Congratulations! You have defeated the evil Render Manager and rescued us, you are truly a brave robot" speaker="Scary" image="LilaDebatiert.png" duration="5000" position="center center"/>
 				<game:MessageToastDeluxe message="" image="effect_pow.png" duration="1" position="begin center"/>
 				<game:MessageToastDeluxe message="" image="effect_awesome.png" duration="1" position="center center"/>
 				<game:MessageToastDeluxe message="" image="effect_plop.png" duration="1" position="end center"/>
-				<game:MessageToastDeluxe message="Thanks for playing Flush!" duration="2000" position="635 430"/>
-				<game:MessageToastDeluxe message="" image="flush_logo_large.png" duration="5000" position="680 420"/>
+				<game:MessageToastDeluxe message="Thanks for playing Flush!" duration="2000" position="center center"/>
+				<game:MessageToastDeluxe message="" image="flush_logo_xl.png" duration="5000" position="center center"/>
 			</game:MessageToastStory>
 		</dependents>
 	</Page>

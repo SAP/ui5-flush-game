@@ -97,7 +97,7 @@ sap.ui.define([
 			// sync mouse
 			document.addEventListener("click", function (oEvent) {
 				var sId = oEvent.target.getAttribute("id");
-				if (!sId) {
+				if (!sId && oEvent.target.parentNode) {
 					sId = oEvent.target.parentNode.getAttribute("id");
 				}
 				var sTargetId = sId && sId.split("--").pop().split("-")[0];

@@ -2,9 +2,10 @@
 sap.ui.define([
 	"sap/m/CustomTile",
 	"sap/ui/core/Icon",
+	"sap/ui/Device",
 	"sap/m/CustomTileRenderer",
 	"sap/ui/thirdparty/jquery" // file contains implicit calls via control.$()
-], function (CustomTile, Icon, CustomTileRenderer) {
+], function (CustomTile, Icon, Device, CustomTileRenderer) {
 	"use strict";
 
 	/**
@@ -93,9 +94,9 @@ sap.ui.define([
 				this._lockedIcon = new Icon({
 					src: "sap-icon://locked",
 					color: "#f2d249",
-					size: "7rem",
-					width: "200px",
-					height: "190px",
+					size: (Device.system.phone ? "5.5rem" : "7rem"),
+					width: (Device.system.phone ? "135px" : "200px"),
+					height: (Device.system.phone ? "135px" : "190px"),
 				});
 			}
 
