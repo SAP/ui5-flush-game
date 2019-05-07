@@ -1,9 +1,10 @@
 sap.ui.define([
 	"sap/m/Page",
+	"sap/ui/Device",
 	"sap/ui/core/HTML",
 	"sap/m/Image",
 	"../controls/MessageToastDeluxe"
-], function (Page, HTML, Image, MessageToastDeluxe) {
+], function (Page, Device, HTML, Image, MessageToastDeluxe) {
 	"use strict";
 
 	/**
@@ -88,12 +89,12 @@ sap.ui.define([
 		 */
 		init: function () {
 			var oCanvas = new HTML(this.getId() + "-canvas", {
-				content: '<canvas class="game sapMFocusable" width="1270px" height="720px" tabindex="0"></canvas>'
+				content: '<canvas class="game sapMFocusable" width="' + (Device.system.desktop ? "1270px" : Device.resize.width) + '" height="' + (Device.system.desktop ? "720px" : Device.resize.height - 120 + "px") + '" tabindex="0"></canvas>'
 			});
 			this.addContent(oCanvas);
 
 			var oDebugCanvas = new HTML("debugCanvas", {
-				content: '<canvas width="1270px" height="720px" style="display:none"></canvas>'
+				content: '<canvas width="' + (Device.system.desktop ? "1270px" : "100vw") + '" height="' + (Device.system.desktop ? "720" : "calc(100% - 4.5rem)") + '" style="display:none"></canvas>'
 			});
 			this.addContent(oDebugCanvas);
 		},
