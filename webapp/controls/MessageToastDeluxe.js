@@ -2,8 +2,12 @@ sap.ui.define([
 	"sap/ui/thirdparty/jquery", // file contains a jQuery.animate call
 	"sap/ui/core/Control",
 	"sap/m/MessageToast",
-], function (jQuery, Control, MessageToast) {
+	"sap/ui/Device"
+], function (jQuery, Control, MessageToast, Device) {
 	"use strict";
+
+	/* monkey patch for faulty message toast validation (mSettings.at also accepts an object with {left: 0, top: 0} syntax */
+	sap.m.MessageToast._validateDockPosition = function () {};
 
 	var previousOffsetLeft = 0;
 
@@ -65,6 +69,10 @@ sap.ui.define([
 		 */
 		init: function () {
 			this._EFFECT_DEFAULT_SIZE = 200;
+			this._MAX_GAME_HEIGHT = 770;
+			this._MESSAGETOAST_WIDTH = 288;
+			this._HEADER_HEIGHT = 50;
+
 			this._fallbackSizes = {
 				"flush_logo_large.png": [427, 179],
 				"flush_logo_xl.png": [909, 332],
@@ -112,6 +120,17 @@ sap.ui.define([
 				oOrdinaryToast = aToastCollection.item(aToastCollection.length - 1),
 				aFallbackSize = this._getFallbackSize(this.getImage());
 
+			// responsiveness: limit fallback size to screen size and scale accordingly
+			if (Device.resize.width < aFallbackSize[0]) {
+				var iOldValue = aFallbackSize[0];
+				aFallbackSize[0] = Device.resize.width;
+				aFallbackSize[1] = aFallbackSize[1] * aFallbackSize[0] / iOldValue;
+			} else if (Device.resize.height < aFallbackSize[1]) {
+				var iOldValue = aFallbackSize[1];
+				aFallbackSize[1] = Math.min(Device.resize.height, this._MAX_GAME_HEIGHT);
+				aFallbackSize[0] = aFallbackSize[1] * aFallbackSize[0] / iOldValue;
+			}
+
 			var oImage = document.createElement("img");
 			oImage.setAttribute("src", sap.ui.require.toUrl("flush/game/images") + '/' + this.getImage());
 			oImage.classList.add("messageToastDeluxeImage");
@@ -122,11 +141,11 @@ sap.ui.define([
 				oImage.style.bottom = oOrdinaryToast.offsetHeight + "px";
 			} else {
 				// center image
-				var iBottom = (oImage.height || aFallbackSize[1]) / -2;
+				var iBottom = (oImage.height || aFallbackSize[1]) / -2 - this._HEADER_HEIGHT;
 				if (this.getPosition().split(" ").pop() === "bottom") {
 					iBottom /= 2;
 				}
-				oImage.style.left = ((oImage.width || aFallbackSize[0]) / -2) + "px";
+				oImage.style.left = ((oImage.width || aFallbackSize[0] - this._MESSAGETOAST_WIDTH) / - 2) + "px";
 				oImage.style.bottom = iBottom + "px";
 			}
 
@@ -221,6 +240,41 @@ sap.ui.define([
 						iOffsetBottom = parseInt(aPosition[1]);
 					}
 
+					// position toast either close to the screen edge or on top of the letterbox
+					var iDistanceToScreen = document.getElementsByClassName("flush")[0].getBoundingClientRect().left || 16;
+					if (iDistanceToScreen > this._MESSAGETOAST_WIDTH / 2) {
+						iDistanceToScreen -= this._MESSAGETOAST_WIDTH / 2;
+					}
+
+					// recalculate center relative to arcade machine width and height
+					if (typeof aPosition[0] === "string" || typeof aPosition[1] === "string") {
+						if (aPosition[0] === "begin") {
+							aPosition[0] = iDistanceToScreen;
+						}
+						if (aPosition[1] === "begin") {
+							aPosition[1] = 0;
+						}
+						if (aPosition[0] === "center") {
+							aPosition[0] = Device.resize.width / 2  - this._MESSAGETOAST_WIDTH / 2;
+						}
+						if (aPosition[1] === "center") {
+							aPosition[1] = Math.min(Device.resize.height, this._MAX_GAME_HEIGHT) / 2;
+						}
+						if (aPosition[0] === "end") {
+							aPosition[0] = Device.resize.width - this._MESSAGETOAST_WIDTH - iDistanceToScreen;
+						}
+						if (aPosition[1] === "end") {
+							aPosition[1] = Math.min(Device.resize.height, this._MAX_GAME_HEIGHT) - 100;
+						}
+
+						// position messages with an image a little furter down
+						if (this.getMessage() && this.getImage()) {
+							aPosition[1] += this._HEADER_HEIGHT;
+						}
+
+						sPosition = {left: aPosition[0], top: aPosition[1]};
+					}
+
 					// add some random jitter offset
 					if (this.getJitter()) {
 						iOffsetLeft += Math.floor(Math.abs(Math.random()) * this.getJitter());
@@ -232,7 +286,7 @@ sap.ui.define([
 						// TODO: support all props of MessageToast
 						at: sPosition,
 						//my: this.getPosition(),
-						offset: iOffsetLeft + " " + iOffsetBottom,
+						//offset: iOffsetLeft + " " + iOffsetBottom,
 						duration: this.getDuration(),
 						width: sWidth,
 						onClose: resolve

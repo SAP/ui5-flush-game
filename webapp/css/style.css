@@ -1,5 +1,10 @@
 /* Enter your custom styles here */
 
+/* prevents scrollbars from message toasts*/
+body {
+	overflow: hidden;
+}
+
 /*remove the default highlight when you tap on an element using a mobile browser*/
 .flush *{
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -70,6 +75,8 @@
 	position: absolute;
 	left: 0;
 	bottom: 0;
+	max-width: 100vw;
+	max-height: 100vh;
 }
 
 .flush .messageToastDeluxeNumber {
@@ -110,6 +117,11 @@
 #debugCanvas {
 	z-index: 2;
 	display: none;
+}
+
+/* intro */
+.flush .introCarousel {
+	border: 0;
 }
 
 /* game tiles */
@@ -259,6 +271,24 @@
 	font-weight: bold;
 	font-size: 16px;
 	margin-top: 1.25rem;
+}
+
+.sap-desktop .flush .arcadeControls {
+	margin-left: 1rem;
+	margin-right: 1rem;
+	padding: 1rem;
+	box-sizing: border-box;
+}
+
+.sap-tablet .flush .arcadeControls,
+.sap-phone .flush .arcadeControls {
+	margin-left: 0.5rem;
+	margin-right: 0.5rem;
+	padding: 0.5rem;
+	padding-top: 0.25rem;
+	padding-bottom: 0.25rem;
+	box-sizing: border-box;
+	width: calc(100% - 1rem);
 }
 
 .flush .progressGauge {
