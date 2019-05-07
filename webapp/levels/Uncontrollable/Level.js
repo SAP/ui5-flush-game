@@ -13,7 +13,12 @@ sap.ui.define([
 		canvas,
 		debugCanvas,
 		debugContext,
-		myCursor;
+		myCursor,
+		fnKeyDown,
+		fnKeyUp,
+		fnMouseDown,
+		fnMouseMove,
+		fnMouseUp;
 
 	// MG: repair broken game - still relies on the globals
 	var player,
@@ -190,7 +195,7 @@ sap.ui.define([
 
 			};
 
-			this.fnKeyDown = function(oEvent) {
+			fnKeyDown = function(oEvent) {
 				switch (oEvent.key) {
 					case "ArrowLeft":
 					case "a":
@@ -230,7 +235,7 @@ sap.ui.define([
 
 			}.bind(this);
 
-			this.fnKeyUp = function(oEvent) {
+			fnKeyUp = function(oEvent) {
 				switch (oEvent.key) {
 					case "ArrowLeft":
 					case "a":
@@ -304,7 +309,7 @@ sap.ui.define([
 				}
 			}.bind(this);
 
-			this.fnMouseDown = function (oEvent) {
+			fnMouseDown = function (oEvent) {
 				// limit the amount of processed events to one every 20ms
 				if (this._bLastDownStillActive) {
 					return;
@@ -332,14 +337,14 @@ sap.ui.define([
 				}
 			}.bind(this);
 
-			this.fnMouseMove = function (oEvent) {
+			fnMouseMove = function (oEvent) {
 				if (this._bMousePressed) {
 					this.shakeMagnet();
 					this.calculateMouseMovement(oEvent);
 				}
 			}.bind(this);
 
-			this.fnMouseUp = function () {
+			fnMouseUp = function () {
 				this._bMousePressed = false;
 				clearInterval(this._iIntervalMove);
 				this._movement = [0, 0];
@@ -355,12 +360,12 @@ sap.ui.define([
 			document.addEventListener("keyup", this.fnKeyUp);
 
 			// sync mouse
-			canvas.addEventListener("mousedown", this.fnMouseDown);
-			canvas.addEventListener("mousemove", this.fnMouseMove);
-			canvas.addEventListener("touchdown", this.fnMouseDown);
-			canvas.addEventListener("touchmove", this.fnMouseDown);
-			canvas.addEventListener("mouseup", this.fnMouseUp);
-			canvas.addEventListener("touchend", this.fnMouseUp);
+			canvas.addEventListener("mousedown", fnMouseDown);
+			canvas.addEventListener("mousemove", fnMouseMove);
+			canvas.addEventListener("mouseup", fnMouseUp);
+			canvas.addEventListener("touchdown", fnMouseDown);
+			canvas.addEventListener("touchmove", fnMouseDown);
+			canvas.addEventListener("touchend", fnMouseUp);
 
 			// Collision Detection
 			var oContactListener = new b2ContactListener();
@@ -949,14 +954,15 @@ sap.ui.define([
 				clearTimeout(_iScoreNoCollisionTimeout);
 				clearTimeout(_iScoreCampingDetectionTimeout);
 				// remove event listeners
-				document.removeEventListener("keydown", this.fnKeyDown);
-				document.removeEventListener("keyup", this.fnKeyUp);
-				document.removeEventListener("mousedown", this.fnMouseDown);
-				document.removeEventListener("mousemove", this.fnMouseMove);
-				document.removeEventListener("mouseup", this.fnMouseUp);
-				document.removeEventListener("touchstart", this.fnMouseDown);
-				document.removeEventListener("touchmove", this.fnMouseMove);
-				document.removeEventListener("touchend", this.fnMouseUp);
+				document.removeEventListener("keydown", fnKeyDown);
+				document.removeEventListener("keyup", fnKeyUp);
+				canvas.removeEventListener("mousedown", fnMouseDown);
+				canvas.removeEventListener("mousemove", fnMouseMove);
+				canvas.removeEventListener("mouseup", fnMouseUp);
+				canvas.removeEventListener("touchdown", fnMouseDown);
+				canvas.removeEventListener("touchmove", fnMouseMove);
+				canvas.removeEventListener("touchend", fnMouseUp);
+
 				fnResolve();
 			}.bind(this));
 		},
