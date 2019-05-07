@@ -168,7 +168,7 @@ sap.ui.define([
 			oNumber.appendChild(document.createTextNode(this.getNumber()));
 
 			oNumber.style.left = -100 + "px";
-			oNumber.style.bottom = -30 + "px";
+			oNumber.style.bottom = -30 - this._HEADER_HEIGHT + "px";
 
 			oOrdinaryToast.appendChild(oNumber);
 
@@ -250,22 +250,24 @@ sap.ui.define([
 					if (typeof aPosition[0] === "string" || typeof aPosition[1] === "string") {
 						if (aPosition[0] === "begin") {
 							aPosition[0] = iDistanceToScreen;
-						}
-						if (aPosition[1] === "begin") {
-							aPosition[1] = 0;
-						}
-						if (aPosition[0] === "center") {
+						} else if (aPosition[0] === "center") {
 							aPosition[0] = Device.resize.width / 2  - this._MESSAGETOAST_WIDTH / 2;
-						}
-						if (aPosition[1] === "center") {
-							aPosition[1] = Math.min(Device.resize.height, this._MAX_GAME_HEIGHT) / 2;
-						}
-						if (aPosition[0] === "end") {
+						} else if (aPosition[0] === "end") {
 							aPosition[0] = Device.resize.width - this._MESSAGETOAST_WIDTH - iDistanceToScreen;
+						} else {
+							aPosition[0] = parseInt(aPosition[0]);
 						}
-						if (aPosition[1] === "end") {
+						if (aPosition[1] === "top") {
+							aPosition[1] = 0;
+						} else if (aPosition[1] === "center") {
+							aPosition[1] = Math.min(Device.resize.height, this._MAX_GAME_HEIGHT) / 2;
+						} else if (aPosition[1] === "bottom") {
 							aPosition[1] = Math.min(Device.resize.height, this._MAX_GAME_HEIGHT) - 100;
+						} else {
+							aPosition[1] = parseInt(aPosition[1]);
 						}
+
+
 
 						// position messages with an image a little furter down
 						if (this.getMessage() && this.getImage()) {
