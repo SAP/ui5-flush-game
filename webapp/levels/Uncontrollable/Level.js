@@ -367,6 +367,14 @@ sap.ui.define([
 			canvas.addEventListener("touchmove", fnMouseDown);
 			canvas.addEventListener("touchend", fnMouseUp);
 
+			// sync mouse
+			canvas.addEventListener("mousedown", fnMouseDown);
+			canvas.addEventListener("mousemove", fnMouseMove);
+			canvas.addEventListener("mouseup", fnMouseUp);
+			canvas.addEventListener("touchdown", fnMouseDown);
+			canvas.addEventListener("touchmove", fnMouseDown);
+			canvas.addEventListener("touchend", fnMouseUp);
+
 			// Collision Detection
 			var oContactListener = new b2ContactListener();
 			oContactListener.BeginContact = function(contact) {

@@ -160,6 +160,9 @@ sap.ui.define([
 		/**
 		 * Go back to home screen after ending the current game level
 		 */
+		/**
+		 * Go back to home screen after ending the current game level
+		 */
 		onBack: function () {
 			clearInterval(this._iInterval);
 			this._stopStory();
