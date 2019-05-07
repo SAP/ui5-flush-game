@@ -94,12 +94,17 @@ sap.ui.define([
 			this.addContent(oCanvas);
 
 			var oDebugCanvas = new HTML("debugCanvas", {
-				content: '<canvas width="' + (Device.system.desktop ? "1270px" : "100vw") + '" height="' + (Device.system.desktop ? "720" : "calc(100% - 4.5rem)") + '" style="display:none"></canvas>'
+				content: '<canvas width="' + (Device.system.desktop ? "1270px" : "100vw") + '" height="' + (Device.system.desktop ? "720px" : Device.resize.height - 120 + "px") + '" style="display:none"></canvas>'
 			});
 			this.addContent(oDebugCanvas);
 		},
 
 		setLevel: function(sLevel){
+			// update canvas size on level load
+			this._updateCanvasSize();
+			// nice idea but the create.js levels don't support it yet
+			//Device.orientation.attachHandler(this._updateCanvasSize);
+
 			// update value property
 			if (sLevel){
 				this.setProperty("level", sLevel);
@@ -114,6 +119,18 @@ sap.ui.define([
 		 */
 		getFocusDomRef: function () {
 			return this.getContent()[0].$()[0];
+		},
+
+		/**
+		 * Updates canvas size to screen size
+ 		 * @private
+		 */
+		_updateCanvasSize: function () {
+			var oCanvas = document.getElementsByClassName("game")[0];
+			if (oCanvas) {
+				oCanvas.setAttribute("width", (Device.system.desktop ? "1270px" : document.body.offsetWidth));
+				oCanvas.setAttribute("height", (Device.system.desktop ? "720px" : document.body.offsetHeight - 120 + "px"));
+			}
 		},
 
 		/**
@@ -564,6 +581,7 @@ sap.ui.define([
 		 * Ends a level, the actions such as updating the score may differ per level
 		 */
 		end : function () {
+			//Device.orientation.detachHandler(this._updateCanvasSize);
 			this._bLevelRunning = false;
 			clearTimeout(this._iLevelTimer);
 			clearInterval(this._iMultiEnergyLoop);

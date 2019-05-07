@@ -163,6 +163,8 @@ sap.ui.define([
 		onBack: function () {
 			clearInterval(this._iInterval);
 			this._stopStory();
+			this.getModel("appView").setProperty("/fromGame", true);
+			this.getModel("view").setProperty("/instructions", "");
 			this.byId("page").end().then(function () {
 				if (this.getModel("view").getProperty("/multi")) {
 					this.getRouter().navTo("multi");

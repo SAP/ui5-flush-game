@@ -1,7 +1,7 @@
 /* Enter your custom styles here */
 
-/* prevents scrollbars from message toasts*/
-body {
+/* prevents scrollbars in all cases*/
+html, body {
 	overflow: hidden;
 }
 

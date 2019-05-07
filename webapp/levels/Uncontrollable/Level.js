@@ -1,7 +1,8 @@
 /* global Box2D, createjs*/
 sap.ui.define([
-	"sap/ui/base/Object"
-], function(UI5Object) {
+	"sap/ui/base/Object",
+	"sap/ui/Device"
+], function(UI5Object, Device) {
 	"use strict";
 
 	// TODO: why globals? refactor me
@@ -11,7 +12,8 @@ sap.ui.define([
 		assetLoader,
 		canvas,
 		debugCanvas,
-		debugContext;
+		debugContext,
+		myCursor;
 
 	// MG: repair broken game - still relies on the globals
 	var player,
@@ -22,6 +24,8 @@ sap.ui.define([
 	var SCALE = 30;
 	var MOVEMENT_SCALE = 100;
 	var KEYBOARD_FREQUENCY = 20;
+	var MOUSE_FREQUENCY = 30;
+	var VERTICAL_LIMIT = 6;
 
 	var _fnInitResolve;
 
@@ -159,7 +163,7 @@ sap.ui.define([
 				var x = aVec[0],
 					y = aVec[1];
 
-				if (Math.abs(playerBody.GetLinearVelocity().y) < 6 && playerBody.GetPosition().y > 6) {
+				if (Math.abs(playerBody.GetLinearVelocity().y) < 6 && playerBody.GetPosition().y > (Device.system.phone && Device.orientation.landscape ? VERTICAL_LIMIT / 2 : VERTICAL_LIMIT)) {
 					playerBody.ApplyForce(new b2Vec2(0, y * MOVEMENT_SCALE * 5), playerBody.GetPosition());
 					_iLastMovement = Date.now();
 
@@ -180,7 +184,6 @@ sap.ui.define([
 					}
 				}
 				playerBody.ApplyForce(new b2Vec2(x * MOVEMENT_SCALE, x * MOVEMENT_SCALE), playerBody.GetPosition());
-				//playerBody.ApplyTorque(0);
 				playerBody.SetLinearDamping(0.5);
 				playerBody.SetFixedRotation(true);
 
@@ -231,24 +234,24 @@ sap.ui.define([
 					case "ArrowLeft":
 					case "a":
 						this._movement[0] = 0;
-						clearInterval(this._iIntervalLeft);
+						clearInterval(this._iIntervalMove);
 						break;
 					case "ArrowRight":
 					case "d":
 						this._movement[0] = 0;
-						clearInterval(this._iIntervalRight);
+						clearInterval(this._iIntervalMove);
 						break;
 					case "ArrowUp":
 					case "w":
 						_oGame.getSoundManager().stop("Raketenduese");
 						player.gotoAndPlay("run");
 						this._movement[1] = 0;
-						clearInterval(this._iIntervalUp);
+						clearInterval(this._iIntervalMove);
 						break;
 					case "ArrowDown":
 					case "s":
 						this._movement[0] = 0;
-						clearInterval(this._iIntervalDown);
+						clearInterval(this._iIntervalMove);
 						break;
 					case " ": // space key
 						//fnSimulateClick("a");
@@ -259,11 +262,103 @@ sap.ui.define([
 				}
 			}.bind(this);
 
+			this.shakeMagnet = function() {
+				if (!this._bShakeRunning) {
+					this._bShakeRunning = true;
+					createjs.Tween.get(myCursor)
+						.to({scaleX: 1.2, scaleY: 1.2}, 50)
+						.to({rotation: myCursor.rotation + 25, rotationDir: -1}, 50)
+						.to({scaleX: 1, scaleY: 1}, 50)
+						.to({rotation: myCursor.rotation}, 50)
+						.to({scaleX: 0.8, scaleY: 0.8}, 50)
+						.to({rotation: myCursor.rotation + 25, rotationDir: -1}, 50)
+						.to({scaleX: 1, scaleY: 1}, 50)
+						.to({rotation: myCursor.rotation}, 50);
+					setTimeout(function () {
+						this._bShakeRunning = false;
+					}.bind(this), 400);
+				}
+			}.bind(this);
+
+			this.fnMouseDown = function (oEvent) {
+				this._bMousePressed = true;
+				this.shakeMagnet();
+
+				// calculate a vector relative to the mouse event and the player
+				if (oEvent.offsetX < player.x + 50) {
+					this._movement[0] = -1;
+				} else {
+					this._movement[0] = 1;
+				}
+				if (oEvent.offsetY < player.y + 75) {
+					this._movement[1] = -1;
+					if (!_oGame.getSoundManager().isPlaying("Raketenduese")) {
+						_oGame.getSoundManager().play("Raketenduese", undefined, undefined, 0.5)
+					}
+					player.gotoAndPlay("fly");
+				} else {
+					this._movement[1] = 1;
+					_oGame.getSoundManager().stop("Raketenduese");
+					player.gotoAndPlay("run");
+				}
+
+				// call move function until no movement or keyup event was triggered
+				if (this._movement [0] || this._movement [1]) {
+					clearInterval(this._iIntervalMove);
+					fnMove(this._movement);
+					this._iIntervalMove = setInterval(function () {
+						fnMove(this._movement);
+					}.bind(this), MOUSE_FREQUENCY);
+				}
+				if (!_oGame.getSoundManager().isPlaying("shootingCharge1")) {
+					_oGame.getSoundManager().play("shootingCharge1");
+				}
+			}.bind(this);
+
+			this.fnMouseMove = function (oEvent) {
+				if (this._bMousePressed) {
+					this.shakeMagnet();
+
+					// calculate a vector relative to the mouse event and the player
+					if (oEvent.offsetX < player.x + 50) {
+						this._movement[0] = -1;
+					} else {
+						this._movement[0] = 1;
+					}
+					if (oEvent.offsetY < player.y) {
+						this._movement[1] = -1;
+						if (!_oGame.getSoundManager().isPlaying("Raketenduese")) {
+							_oGame.getSoundManager().play("Raketenduese", undefined, undefined, 0.5)
+						}
+						player.gotoAndPlay("fly");
+					} else {
+						this._movement[1] = 1;
+						_oGame.getSoundManager().stop("Raketenduese");
+						player.gotoAndPlay("run");
+					}
+				}
+			}.bind(this);
+
+			this.fnMouseUp = function () {
+				this._bMousePressed = false;
+				clearInterval(this._iIntervalMove);
+				this._movement = [0, 0];
+				_oGame.getSoundManager().stop("shootingCharge1");
+				_oGame.getSoundManager().stop("Raketenduese");
+				player.gotoAndPlay("run");
+			}.bind(this);
+
 			this._movement = [0, 0];
 
 			// sync keyboard
 			document.addEventListener("keydown", this.fnKeyDown);
 			document.addEventListener("keyup", this.fnKeyUp);
+
+			// sync mouse
+			canvas.addEventListener("mousedown", this.fnMouseDown);
+			canvas.addEventListener("mousemove", this.fnMouseMove);
+			document.addEventListener("touchmove", this.fnMouseMove);
+			canvas.addEventListener("mouseup", this.fnMouseUp);
 
 			// Collision Detection
 			var oContactListener = new b2ContactListener();
@@ -502,7 +597,6 @@ sap.ui.define([
 					this._skyline2.x = canvasWidth;
 				}
 
-
 				var deltaSP = oEvent.delta / 1000;
 				this._hill1.x = (this._hill1.x - deltaSP * 60);
 				if (this._hill1.x + this._hill1.image.width * this._hill1.scaleX <= 0) {
@@ -549,6 +643,28 @@ sap.ui.define([
 					}, this._playerBody, this._player);
 				}
 			}
+
+			myCursor.x = stage.mouseX;
+			myCursor.y = stage.mouseY;
+
+			// stay on stage
+			myCursor.x = Math.max(0, myCursor.x);
+			myCursor.x = Math.min(myCursor.x, canvas.width - 75);
+			myCursor.y = Math.max(0, myCursor.y);
+			myCursor.y = Math.min(myCursor.y, canvas.height - 75);
+
+			// hide magnet if player is only using keyboard
+			if (stage.mouseX === 0 && stage.mouseY === 0) {
+				myCursor.x = -200;
+				myCursor.y = -200;
+			}
+
+			// rotate towards player
+			var deltaX = player.x + 50 - myCursor.x - 50;
+			var deltaY = player.y + 75 - myCursor.y - 80;
+			myCursor.rotation = Math.atan2(deltaX, deltaY * -1) * 180 / Math.PI;
+
+			stage.setChildIndex(myCursor, stage.getNumChildren() - 1);
 		},
 
 		/**
@@ -689,6 +805,10 @@ sap.ui.define([
 					id: "ALVTable",
 					src: sAssetPath + "/ALVTable.png"
 				});
+				assetLoader.loadFile({
+					id: "magnet",
+					src: sAssetPath + "/magnet.png"
+				});
 			}.bind(this));
 		},
 
@@ -733,6 +853,13 @@ sap.ui.define([
 			this._skyline2.x = canvasWidth;
 			this._skyline2.y = canvasHeight - this._skyline2.height + 7;
 			stage.addChild(this._skyline2);
+
+			myCursor = new createjs.Bitmap(assetLoader.getResult("magnet"));
+			myCursor.regX = 52;
+			myCursor.regY = 83;
+
+			myCursor.mouseEnabled = false;
+			stage.addChild(myCursor);
 
 			// Spawn player
 			gameObjects.spawnGameObject({
@@ -821,6 +948,10 @@ sap.ui.define([
 				// remove event listeners
 				document.removeEventListener("keydown", this.fnKeyDown);
 				document.removeEventListener("keyup", this.fnKeyUp);
+				document.removeEventListener("mousedown", this.fnMouseDown);
+				document.removeEventListener("mousemove", this.fnMouseMove);
+				document.removeEventListener("touchmove", this.fnMouseMove);
+				document.removeEventListener("mouseup", this.fnMouseUp);
 				fnResolve();
 			}.bind(this));
 		},
