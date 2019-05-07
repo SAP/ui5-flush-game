@@ -54,16 +54,17 @@
 		</layout:HorizontalLayout>
 		<!-- Instructions -->
 		<layout:HorizontalLayout
-			visible="{device>/system/desktop}">
+			visible="{device>/system/desktop}"
+			class="instructionsLayout">
 			<Text
-				width="520px"
+				width="100%"
 				visible="{= ${view>/instructions} !== ''}"
 				text="{view>/instructions}"
 				textAlign="Center"
 				class="moodLabel"/>
 			<layout:VerticalLayout
 				visible="{= ${view>/instructions} === ''}"
-				width="520px"
+				width="100%"
 				class="centered sapUiTinyMarginTop">
 				<SegmentedButton
 					selectedKey="{appView>/mode}"

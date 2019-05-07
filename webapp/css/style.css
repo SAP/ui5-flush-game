@@ -224,6 +224,19 @@ body {
 	padding-right: 0.5rem;
 }
 
+.sap-desktop .flush .arcadeControls.sapUiHLayout > .sapUiHLayoutChildWrapper:nth-child(2),
+.sap-tablet .flush .arcadeControls.sapUiHLayout > .sapUiHLayoutChildWrapper:nth-child(2) {
+	width: calc(100% - 601px);
+	min-width: 200px;
+}
+
+.flush .instructionsLayout,
+.flush .instructionsLayout > .sapUiHLayoutChildWrapper {
+	width: 100%;
+	min-width: 200px;
+	display: block;
+}
+
 .flush .arcadeButton {
 	height: 3.8rem;
 }
@@ -279,7 +292,7 @@ body {
 	border-color: #de890d;
 }
 
-.flush .arcadeControls .sapUiHLayoutChildWrapper:last-child {
+.sap-phone .flush .arcadeControls .sapUiHLayoutChildWrapper:last-child {
 	float: right;
 }
 
@@ -295,6 +308,7 @@ body {
 	margin-right: 1rem;
 	padding: 1rem;
 	box-sizing: border-box;
+	min-width: 880px;
 }
 
 .sap-tablet .flush .arcadeControls,
