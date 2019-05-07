@@ -25,6 +25,7 @@ sap.ui.define([
 	var MOVEMENT_SCALE = 100;
 	var KEYBOARD_FREQUENCY = 20;
 	var MOUSE_FREQUENCY = 30;
+	var TOUCH_FREQUENCY = 60;
 	var VERTICAL_LIMIT = 6;
 
 	var _fnInitResolve;
@@ -280,17 +281,17 @@ sap.ui.define([
 				}
 			}.bind(this);
 
-			this.fnMouseDown = function (oEvent) {
-				this._bMousePressed = true;
-				this.shakeMagnet();
+			// calculate a vector relative to the mouse event and the player
+			this.calculateMouseMovement = function (oEvent) {
+				var x = oEvent.offsetX || oEvent.targetTouches[0].clientX;
+				var y = oEvent.offsetY || oEvent.targetTouches[0].clientY;
 
-				// calculate a vector relative to the mouse event and the player
-				if (oEvent.offsetX < player.x + 50) {
+				if (x < player.x + 50) {
 					this._movement[0] = -1;
 				} else {
 					this._movement[0] = 1;
 				}
-				if (oEvent.offsetY < player.y + 75) {
+				if (y < player.y + 50) {
 					this._movement[1] = -1;
 					if (!_oGame.getSoundManager().isPlaying("Raketenduese")) {
 						_oGame.getSoundManager().play("Raketenduese", undefined, undefined, 0.5)
@@ -301,6 +302,22 @@ sap.ui.define([
 					_oGame.getSoundManager().stop("Raketenduese");
 					player.gotoAndPlay("run");
 				}
+			}.bind(this);
+
+			this.fnMouseDown = function (oEvent) {
+				// limit the amount of processed events to one every 20ms
+				if (this._bLastDownStillActive) {
+					return;
+				}
+				setTimeout(function () {
+					this._bLastDownStillActive = false;
+				}.bind(this), 20);
+				this._bLastDownStillActive = true;
+
+				this._bMousePressed = true;
+
+				this.shakeMagnet();
+				this.calculateMouseMovement(oEvent);
 
 				// call move function until no movement or keyup event was triggered
 				if (this._movement [0] || this._movement [1]) {
@@ -308,7 +325,7 @@ sap.ui.define([
 					fnMove(this._movement);
 					this._iIntervalMove = setInterval(function () {
 						fnMove(this._movement);
-					}.bind(this), MOUSE_FREQUENCY);
+					}.bind(this), (oEvent.targetTouches ? TOUCH_FREQUENCY : MOUSE_FREQUENCY));
 				}
 				if (!_oGame.getSoundManager().isPlaying("shootingCharge1")) {
 					_oGame.getSoundManager().play("shootingCharge1");
@@ -318,24 +335,7 @@ sap.ui.define([
 			this.fnMouseMove = function (oEvent) {
 				if (this._bMousePressed) {
 					this.shakeMagnet();
-
-					// calculate a vector relative to the mouse event and the player
-					if (oEvent.offsetX < player.x + 50) {
-						this._movement[0] = -1;
-					} else {
-						this._movement[0] = 1;
-					}
-					if (oEvent.offsetY < player.y) {
-						this._movement[1] = -1;
-						if (!_oGame.getSoundManager().isPlaying("Raketenduese")) {
-							_oGame.getSoundManager().play("Raketenduese", undefined, undefined, 0.5)
-						}
-						player.gotoAndPlay("fly");
-					} else {
-						this._movement[1] = 1;
-						_oGame.getSoundManager().stop("Raketenduese");
-						player.gotoAndPlay("run");
-					}
+					this.calculateMouseMovement(oEvent);
 				}
 			}.bind(this);
 
@@ -357,8 +357,10 @@ sap.ui.define([
 			// sync mouse
 			canvas.addEventListener("mousedown", this.fnMouseDown);
 			canvas.addEventListener("mousemove", this.fnMouseMove);
-			document.addEventListener("touchmove", this.fnMouseMove);
+			canvas.addEventListener("touchdown", this.fnMouseDown);
+			canvas.addEventListener("touchmove", this.fnMouseDown);
 			canvas.addEventListener("mouseup", this.fnMouseUp);
+			canvas.addEventListener("touchend", this.fnMouseUp);
 
 			// Collision Detection
 			var oContactListener = new b2ContactListener();
@@ -712,6 +714,7 @@ sap.ui.define([
 				createjs.MotionGuidePlugin.install();
 
 				stage = new createjs.Stage(canvas);
+				createjs.Touch.enable(stage);
 				stage.snapPixelsEnabled = true;
 
 				canvasWidth = this._oCanvas.$().width();
@@ -950,8 +953,10 @@ sap.ui.define([
 				document.removeEventListener("keyup", this.fnKeyUp);
 				document.removeEventListener("mousedown", this.fnMouseDown);
 				document.removeEventListener("mousemove", this.fnMouseMove);
-				document.removeEventListener("touchmove", this.fnMouseMove);
 				document.removeEventListener("mouseup", this.fnMouseUp);
+				document.removeEventListener("touchstart", this.fnMouseDown);
+				document.removeEventListener("touchmove", this.fnMouseMove);
+				document.removeEventListener("touchend", this.fnMouseUp);
 				fnResolve();
 			}.bind(this));
 		},

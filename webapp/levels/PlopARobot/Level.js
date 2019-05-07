@@ -139,6 +139,9 @@ sap.ui.define([
 		 */
 		onLoadingCompleted: function() {
 			stage = new createjs.Stage(this._oCanvas.getId());
+			createjs.Touch.enable(stage);
+			stage.autoClear = false;
+			stage.alpha = 1;
 
 			setTimeout(function () {
 				constructorLoaded = false;
@@ -305,9 +308,6 @@ sap.ui.define([
 			}
 
 			this.removeBalls();
-
-			stage.autoClear = false;
-			stage.alpha = 1;
 
 			// only change cursor position if mouse moved to allow keyboard control
 			// x coordinate
