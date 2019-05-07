@@ -160,9 +160,14 @@ sap.ui.define([
 		/**
 		 * Go back to home screen after ending the current game level
 		 */
+		/**
+		 * Go back to home screen after ending the current game level
+		 */
 		onBack: function () {
 			clearInterval(this._iInterval);
 			this._stopStory();
+			this.getModel("appView").setProperty("/fromGame", true);
+			this.getModel("view").setProperty("/instructions", "");
 			this.byId("page").end().then(function () {
 				if (this.getModel("view").getProperty("/multi")) {
 					this.getRouter().navTo("multi");
