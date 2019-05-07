@@ -40,6 +40,7 @@ body {
 	position: absolute;
 	top: -10px;
 	left: calc(50% - 150px);
+	z-index: 1;
 }
 
 .flush .sapMHeader-CTX .sapMBtnContent,
@@ -134,6 +135,15 @@ body {
 	line-height: 130px;
 }
 
+.sap-phone .flush .gameTile .levelNumber {
+	font-size: 75px;
+	line-height: 115px;
+}
+
+.sap-phone .flush .gameTile .sapUiVlt {
+	margin-top: -15px;
+}
+
 .flush .gameTile .levelName {
 	width: 100%;
 	display: inline-block;
@@ -142,26 +152,28 @@ body {
 	font-size: 20px;
 }
 
+.sap-phone .flush .gameTile .levelName {
+	font-size: 15px;
+}
+
 .flush .gameTile {
 	width: 200px;
 	height: 200px;
 	background-color: #aadddd;
-	border: 3px solid cadetblue;
-	padding: 1rem;
-	margin: 1rem;
-	border-radius: 8px;
-
 	box-shadow: 0px 0px 80px #9E5FF;
-
-	width: 200px;
-	height: 200px;
-	background-color: #aadddd;
 	border: 5px solid cadetblue;
 	padding: 1rem;
 	margin: 1rem;
 	border-radius: 100px;
 	box-shadow: 0px 0px 40px #C9E5FF;
 	background: #f0f9ff;
+}
+
+.sap-phone .flush .gameTile {
+	width: 145px;
+	height: 145px;
+	margin: 0.5rem;
+	box-shadow: 0px 0px 15px #C9E5FF;
 }
 
 .flush .gameTile.player1win {
@@ -189,6 +201,11 @@ body {
 	top: 0;
 	left: 0;
 	opacity: 0.9;
+}
+
+.sap-phone .flush .gameTile.locked .locker {
+	width: 135px;
+	height: 135px;
 }
 
 .flush .gameTile .locker .sapUiIcon {
