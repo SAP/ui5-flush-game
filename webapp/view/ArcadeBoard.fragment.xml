@@ -4,53 +4,57 @@
 	xmlns:core="sap.ui.core">
 	<layout:HorizontalLayout
 		visible="{= !${view>/multi} }"
-		class="arcadeControls sapUiContentPadding sapUiSmallMarginBeginEnd">
+		class="arcadeControls">
 		<!-- l/u/d/r buttons -->
-		<Button
-			id="l"
-			press=".onArcadeInput"
-			icon="sap-icon://navigation-left-arrow"
-			type="Emphasized"
-			tooltip="Go left"
-			class="arcadeButtonDirection"/>
-		<Button
-			id="u"
-			press=".onArcadeInput"
-			icon="sap-icon://navigation-up-arrow"
-			type="Emphasized"
-			tooltip="Go right"
-			class="arcadeButtonDirection"/>
-		<Button
-			id="d"
-			press=".onArcadeInput"
-			icon="sap-icon://navigation-down-arrow"
-			type="Emphasized"
-			tooltip="Jump"
-			class="arcadeButtonDirection"/>
-		<Button
-			id="r"
-			press=".onArcadeInput"
-			icon="sap-icon://navigation-right-arrow"
-			type="Emphasized"
-			tooltip="Cover"
-			class="arcadeButtonDirection sapUiSmallMarginEnd"/>
-		<!-- a/b buttons -->
-		<Button
-			id="a"
-			press=".onArcadeInput"
-			text="A"
-			type="Emphasized"
-			tooltip="Fire"
-			class="arcadeButton red"/>
-		<Button
-			id="b"
-			press=".onArcadeInput"
-			text="B"
-			type="Emphasized"
-			tooltip="Bomb"
-			class="arcadeButton yellow"/>
+		<layout:HorizontalLayout
+			visible="{= !${device>/system/phone} }">
+			<Button
+				id="l"
+				press=".onArcadeInput"
+				icon="sap-icon://navigation-left-arrow"
+				type="Emphasized"
+				tooltip="Go left"
+				class="arcadeButtonDirection"/>
+			<Button
+				id="u"
+				press=".onArcadeInput"
+				icon="sap-icon://navigation-up-arrow"
+				type="Emphasized"
+				tooltip="Go right"
+				class="arcadeButtonDirection"/>
+			<Button
+				id="d"
+				press=".onArcadeInput"
+				icon="sap-icon://navigation-down-arrow"
+				type="Emphasized"
+				tooltip="Jump"
+				class="arcadeButtonDirection"/>
+			<Button
+				id="r"
+				press=".onArcadeInput"
+				icon="sap-icon://navigation-right-arrow"
+				type="Emphasized"
+				tooltip="Cover"
+				class="arcadeButtonDirection sapUiSmallMarginEnd"/>
+			<!-- a/b buttons -->
+			<Button
+				id="a"
+				press=".onArcadeInput"
+				text="A"
+				type="Emphasized"
+				tooltip="Fire"
+				class="arcadeButton red"/>
+			<Button
+				id="b"
+				press=".onArcadeInput"
+				text="B"
+				type="Emphasized"
+				tooltip="Bomb"
+				class="arcadeButton yellow"/>
+		</layout:HorizontalLayout>
 		<!-- Instructions -->
-		<layout:HorizontalLayout>
+		<layout:HorizontalLayout
+			visible="{device>/system/desktop}">
 			<Text
 				width="520px"
 				visible="{= ${view>/instructions} !== ''}"

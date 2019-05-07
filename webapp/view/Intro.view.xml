@@ -15,24 +15,26 @@
 		<content>
 			<Carousel
 				id="introBg"
-				height="720px"
+				height="{= ${device>/system/desktop} ? '720px' : 'calc(100% - 4.5rem)'}"
 				showPageIndicator="false"
 				pages="{view>/intro}"
-				pageChanged=".onCarouselChange">
+				pageChanged=".onCarouselChange"
+				class="introCarousel">
 				<Image
 					src="{
 						path: 'view>file',
 						formatter: '.formatter.pictureUrl'
 					}"
-					height="720px"/>
+					width="{= ${device>/system/desktop} ? 'inherit' : '100%'}"
+					height="{= ${device>/system/desktop} ? '720px' : 'inherit'}"/>
 			</Carousel>
 			<core:Fragment id="arcadeBoard" fragmentName="flush.game.view.ArcadeBoard" type="XML"/>
 		</content>
 		<dependents>
 			<game:MessageToastStory id="intro0">
 				<game:MessageToastDeluxe message="" duration="2000"/>
-				<game:MessageToastDeluxe message="UI5 presents" duration="2000" position="600 425"/>
-				<game:MessageToastDeluxe message="" image="flush_logo_xl.png" duration="3000" position="635 425"/>
+				<game:MessageToastDeluxe message="UI5 presents" duration="2000" position="center center"/>
+				<game:MessageToastDeluxe message="" image="flush_logo_xl.png" duration="3000" position="center center"/>
 			</game:MessageToastStory>
 			<game:MessageToastStory id="intro1">
 				<game:MessageToastDeluxe message="" duration="1000"/>
@@ -41,7 +43,7 @@
 			</game:MessageToastStory>
 			<game:MessageToastStory id="intro2">
 				<game:MessageToastDeluxe message="" duration="3500"/>
-				<game:MessageToastDeluxe message="" image="effect_awesome.png" duration="1" position="begin 500"/>
+				<game:MessageToastDeluxe message="" image="effect_awesome.png" duration="1" position="begin center"/>
 				<game:MessageToastDeluxe message="Damn, he has been hit by a flash!" speaker="Scary" image="LilaDebatiert.png" duration="3000" position="end center"/>
 			</game:MessageToastStory>
 			<game:MessageToastStory id="intro3">
