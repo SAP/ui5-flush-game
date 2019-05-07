@@ -38,6 +38,7 @@ sap.ui.define([
 				this._fnInitResolve = fnResolve;
 
 				this.stage = new createjs.Stage(this._oCanvas.getId());
+				createjs.Touch.enable(this.stage);
 
 				var manifest = [
 					{src: "bg.png", id: "bg"},

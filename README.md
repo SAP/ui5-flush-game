@@ -8,8 +8,8 @@ An innovative and fun game combining [OpenUI5](https://github.com/SAP/openui5) a
 
 ## How to Play
 
-Flush! can be played in single player or two player mode. Use your mouse or keyboard to score points.
-The game can also be played with game pads or custom game controllers.
+Flush! can be played in single player or two player mode. Use your mouse, fingers, or keyboard to score points.
+Multiplayer levels are keyboard-only. The game can also be played with game pads or custom game controllers.
 
 Follow the in-game instructions or check the [input control](InputControl.md) page for more details.
 

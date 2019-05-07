@@ -9,11 +9,10 @@ If you like to use game pads or other types of game controllers, please check th
 
 ## Mouse Input
 
-Some levels (WhackABug and PlopARobot) can be played with mouse and keyboard input.
-Mouse move and click events are triggering the same events as keyboard input.
+All single player levels can be played with mouse, touch, and keyboard input.
+Using mouse or touch input, you can aim with the hammer or magnet to score points.
 
-The levels Uncontrollable and UncontrollableMultiplayer are keyboard-only levels.
-
+The multiplayer levels are keyboard-only and come with additional game actions.
 
 ## Keyboard Input
 

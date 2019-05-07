@@ -1,5 +1,10 @@
 /* Enter your custom styles here */
 
+/* prevents scrollbars in all cases*/
+html, body {
+	overflow: hidden;
+}
+
 /*remove the default highlight when you tap on an element using a mobile browser*/
 .flush *{
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -35,6 +40,7 @@
 	position: absolute;
 	top: -10px;
 	left: calc(50% - 150px);
+	z-index: 1;
 }
 
 .flush .sapMHeader-CTX .sapMBtnContent,
@@ -70,6 +76,8 @@
 	position: absolute;
 	left: 0;
 	bottom: 0;
+	max-width: 100vw;
+	max-height: 100vh;
 }
 
 .flush .messageToastDeluxeNumber {
@@ -112,6 +120,11 @@
 	display: none;
 }
 
+/* intro */
+.flush .introCarousel {
+	border: 0;
+}
+
 /* game tiles */
 .flush .gameTile .levelNumber {
 	display: inline-block;
@@ -122,6 +135,15 @@
 	line-height: 130px;
 }
 
+.sap-phone .flush .gameTile .levelNumber {
+	font-size: 75px;
+	line-height: 115px;
+}
+
+.sap-phone .flush .gameTile .sapUiVlt {
+	margin-top: -15px;
+}
+
 .flush .gameTile .levelName {
 	width: 100%;
 	display: inline-block;
@@ -130,26 +152,28 @@
 	font-size: 20px;
 }
 
+.sap-phone .flush .gameTile .levelName {
+	font-size: 15px;
+}
+
 .flush .gameTile {
 	width: 200px;
 	height: 200px;
 	background-color: #aadddd;
-	border: 3px solid cadetblue;
-	padding: 1rem;
-	margin: 1rem;
-	border-radius: 8px;
-
 	box-shadow: 0px 0px 80px #9E5FF;
-
-	width: 200px;
-	height: 200px;
-	background-color: #aadddd;
 	border: 5px solid cadetblue;
 	padding: 1rem;
 	margin: 1rem;
 	border-radius: 100px;
 	box-shadow: 0px 0px 40px #C9E5FF;
 	background: #f0f9ff;
+}
+
+.sap-phone .flush .gameTile {
+	width: 145px;
+	height: 145px;
+	margin: 0.5rem;
+	box-shadow: 0px 0px 15px #C9E5FF;
 }
 
 .flush .gameTile.player1win {
@@ -179,6 +203,11 @@
 	opacity: 0.9;
 }
 
+.sap-phone .flush .gameTile.locked .locker {
+	width: 135px;
+	height: 135px;
+}
+
 .flush .gameTile .locker .sapUiIcon {
 	text-shadow: 0px 0px 50px darkcyan;
 }
@@ -193,6 +222,19 @@
 
 .flush .arcadeControls.sapUiHLayout > .sapUiHLayoutChildWrapper:not(:last-child) {
 	padding-right: 0.5rem;
+}
+
+.sap-desktop .flush .arcadeControls.sapUiHLayout > .sapUiHLayoutChildWrapper:nth-child(2),
+.sap-tablet .flush .arcadeControls.sapUiHLayout > .sapUiHLayoutChildWrapper:nth-child(2) {
+	width: calc(100% - 601px);
+	min-width: 200px;
+}
+
+.flush .instructionsLayout,
+.flush .instructionsLayout > .sapUiHLayoutChildWrapper {
+	width: 100%;
+	min-width: 200px;
+	display: block;
 }
 
 .flush .arcadeButton {
@@ -250,7 +292,7 @@
 	border-color: #de890d;
 }
 
-.flush .arcadeControls .sapUiHLayoutChildWrapper:last-child {
+.sap-phone .flush .arcadeControls .sapUiHLayoutChildWrapper:last-child {
 	float: right;
 }
 
@@ -259,6 +301,25 @@
 	font-weight: bold;
 	font-size: 16px;
 	margin-top: 1.25rem;
+}
+
+.sap-desktop .flush .arcadeControls {
+	margin-left: 1rem;
+	margin-right: 1rem;
+	padding: 1rem;
+	box-sizing: border-box;
+	min-width: 880px;
+}
+
+.sap-tablet .flush .arcadeControls,
+.sap-phone .flush .arcadeControls {
+	margin-left: 0.5rem;
+	margin-right: 0.5rem;
+	padding: 0.5rem;
+	padding-top: 0.25rem;
+	padding-bottom: 0.25rem;
+	box-sizing: border-box;
+	width: calc(100% - 1rem);
 }
 
 .flush .progressGauge {
