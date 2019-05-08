@@ -87,7 +87,7 @@ html, body {
 .flush .messageToastDeluxeNumber {
 	color: black;
 	font-weight: bold;
-	font-family: "Comic Sans MS", cursive, sans-serif;
+	font-family: "Comic Sans MS", Arial, sans-serif;
 	font-size: 2.5rem;
 	position: absolute;
 	left: 0;
