@@ -24,5 +24,5 @@
 		}, 300 + Math.random() * 500);
 	}
 
-	updateStatus();
+	window.onload = updateStatus;
 })();
