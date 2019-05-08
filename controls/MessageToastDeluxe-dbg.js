@@ -120,20 +120,23 @@ sap.ui.define([
 				oOrdinaryToast = aToastCollection.item(aToastCollection.length - 1),
 				aFallbackSize = this._getFallbackSize(this.getImage());
 
-			// responsiveness: limit fallback size to screen size and scale accordingly
-			if (Device.resize.width < aFallbackSize[0]) {
-				var iOldValue = aFallbackSize[0];
-				aFallbackSize[0] = Device.resize.width;
-				aFallbackSize[1] = aFallbackSize[1] * aFallbackSize[0] / iOldValue;
-			} else if (Device.resize.height < aFallbackSize[1]) {
-				var iOldValue = aFallbackSize[1];
-				aFallbackSize[1] = Math.min(Device.resize.height, this._MAX_GAME_HEIGHT);
-				aFallbackSize[0] = aFallbackSize[1] * aFallbackSize[0] / iOldValue;
-			}
-
+			// create new image tag to load the asset
 			var oImage = document.createElement("img");
 			oImage.setAttribute("src", sap.ui.require.toUrl("flush/game/images") + '/' + this.getImage());
 			oImage.classList.add("messageToastDeluxeImage");
+
+			// responsiveness: limit fallback size to screen size and scale accordingly
+			if (Device.resize.width < aFallbackSize[0]) {
+				var iOldValue = aFallbackSize[0];
+				aFallbackSize[0] = Device.resize.width * 0.9; // 90% width
+				aFallbackSize[1] = aFallbackSize[1] * aFallbackSize[0] / iOldValue;
+			} else if (Device.resize.height < aFallbackSize[1]) {
+				var iOldValue = aFallbackSize[1];
+				aFallbackSize[1] = Math.min(Device.resize.height * 0.9, this._MAX_GAME_HEIGHT); // 90% height
+				aFallbackSize[0] = aFallbackSize[1] * aFallbackSize[0] / iOldValue;
+			}
+			oImage.width = aFallbackSize[0];
+			oImage.height = aFallbackSize[1];
 
 			if (this.getMessage()) {
 				// put image on top of toast
@@ -269,11 +272,13 @@ sap.ui.define([
 							aPosition[1] = parseInt(aPosition[1]);
 						}
 
-
-
-						// position messages with an image a little furter down
+						// special cases
 						if (this.getMessage() && this.getImage()) {
+							// position messages with an image a little furter down
 							aPosition[1] += this._HEADER_HEIGHT;
+						} else {
+							// move up other sprites a bit
+							aPosition[1] -= this._HEADER_HEIGHT / 2;
 						}
 
 						sPosition = {left: aPosition[0], top: aPosition[1]};
