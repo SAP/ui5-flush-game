@@ -16,6 +16,7 @@
 				<Button icon="sap-icon://group" text="Credits" tooltip="Show Credits Dialog" press=".onCredits"/>
 				<ToolbarSpacer/>
 				<Image
+					width="{= ${device>/system/phone} ? '200px' : 'inherit' }"
 					src="{
 						path: 'appView>/flushLogo',
 						formatter: '.formatter.pictureUrl'
