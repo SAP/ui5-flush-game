@@ -500,7 +500,6 @@ sap.ui.define([
 				document.addEventListener("keyup", this.fnKeyUp);
 
 				setTimeout(() => {
-					this.oGame.triggerEvent("start");
 					// throw an initial control to illustrate the game
 					// (and fix the initial stuck bug once and for all!!!111!!11111)
 					this.throwControl(1, 3000 / this._iDifficulty);
