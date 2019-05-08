@@ -1,6 +1,7 @@
 sap.ui.define([
-	"sap/ui/base/Object"
-], function (UI5Object) {
+	"sap/ui/base/Object",
+	"sap/ui/Device"
+], function (UI5Object, Device) {
 	"use strict";
 
 	/* globals needed for this level */
@@ -27,6 +28,8 @@ sap.ui.define([
 			this._boundKeyUp = this._fnKeyUp.bind(this);
 			this._keyboardInputX = 0;
 			this._keyboardInputY = 0;
+
+			this._iScaleFactor = 1;
 		},
 
 		/**
@@ -100,6 +103,19 @@ sap.ui.define([
 		 */
 		onLoadingCompleted: function () {
 			var bg = new createjs.Bitmap(loader.getResult("bg"));
+
+			// scale down level on phones to see at least 2-4 holes
+			if (Device.system.phone) {
+				if (document.body.offsetWidth < document.body.offsetHeight) {
+					// portrait
+					this._iScaleFactor = 0.97;
+				} else {
+					// landscape
+					this._iScaleFactor = 0.635;
+				}
+			}
+			bg.scaleX = this._iScaleFactor;
+			bg.scaleY = this._iScaleFactor;
 
 			this.stage.addChild(bg);
 
@@ -268,7 +284,9 @@ sap.ui.define([
 		 */
 		showBadBug: function () {
 			var randomBadPos = Math.floor(Math.random() * bugsX.length);
-			if (randomBadPos !== this.randomPos) {
+			if (randomBadPos !== this.randomPos &&
+					bugsX[randomBadPos] * this._iScaleFactor < document.body.offsetWidth &&
+					bugsY[randomBadPos] * this._iScaleFactor < document.body.offsetHeight) {
 				// only show bad bug if they don't overlap
 				if (this.lastBadBug != null) {
 					this.lastBadBug.removeAllEventListeners();
@@ -279,18 +297,19 @@ sap.ui.define([
 				// chose more or less characters based on difficulty
 				var iEvilIndex = Math.floor(Math.random() * 2 * Math.max(this._iDifficulty / 10, 1));
 				this.badBug = new createjs.Bitmap(loader.getResult("boese" + iEvilIndex));
-
-				this.badBug.x = bugsX[randomBadPos];
-				this.badBug.y = bugsY[randomBadPos] - (bXmas ? 18 : 0);
+				this.badBug.scaleX = this._iScaleFactor;
+				this.badBug.scaleY = this._iScaleFactor;
+				this.badBug.x = bugsX[randomBadPos] * this._iScaleFactor;
+				this.badBug.y = bugsY[randomBadPos] * this._iScaleFactor - (bXmas ? 18 : 0);
 				this.stage.addChild(this.badBug);
 				this.badBug.on("click", this.badBugHit.bind(this));
 
 				this.lastBadBug = this.badBug;
-				this.lastBadBug.scaleY = 0.3;
-				this.lastBadBug.y += 42;
+				this.lastBadBug.scaleY *= 0.3;
+				this.lastBadBug.y += 42 * this._iScaleFactor;
 
 				var iDelay = 4000 / (1.5 + this._iDifficulty / 5);
-				createjs.Tween.get(this.lastBadBug).to({scaleY: 1, y: bugsY[randomBadPos] - (bXmas ? 18 : 0)}, 200).wait(iDelay).call(function(){
+				createjs.Tween.get(this.lastBadBug).to({scaleY: 1 * this._iScaleFactor, y: bugsY[randomBadPos] * this._iScaleFactor - (bXmas ? 18 : 0)}, 200).wait(iDelay).call(function(){
 					this.showBadBug();
 				}.bind(this));
 			} else {
@@ -318,29 +337,39 @@ sap.ui.define([
 		 * Show another good guy
 		 */
 		showGoodBug: function () {
-			if(this.lastBug != null) {
-				this.lastBug.removeAllEventListeners();
-				this.stage.removeChild(this.lastBug);
-				this.lastBug = null;
-			}
-
-			var iGoodIndex = Math.floor(Math.random() * 6 * Math.max(this._iDifficulty / 10, 1));
 			this.randomPos = Math.floor(Math.random() * bugsX.length);
-			this.bug = new createjs.Bitmap(loader.getResult("gut" + iGoodIndex));
+			if (bugsX[this.randomPos] * this._iScaleFactor < document.body.offsetWidth &&
+				bugsY[this.randomPos] * this._iScaleFactor < document.body.offsetHeight) {
 
-			this.bug.x = bugsX[this.randomPos];
-			this.bug.y = bugsY[this.randomPos];
-			this.stage.addChild(this.bug);
-			this.bug.on("click", this.goodBugHit.bind(this));
+				if (this.lastBug != null) {
+					this.lastBug.removeAllEventListeners();
+					this.stage.removeChild(this.lastBug);
+					this.lastBug = null;
+				}
 
-			this.lastBug = this.bug;
-			this.lastBug.scaleY = 0.4;
-			this.lastBug.y += 42;
+				var iGoodIndex = Math.floor(Math.random() * 6 * Math.max(this._iDifficulty / 10, 1));
+				this.bug = new createjs.Bitmap(loader.getResult("gut" + iGoodIndex));
+				this.bug.scaleX = this._iScaleFactor;
+				this.bug.scaleY = this._iScaleFactor;
+				this.bug.x = bugsX[this.randomPos] * this._iScaleFactor;
+				this.bug.y = bugsY[this.randomPos] * this._iScaleFactor;
+				this.stage.addChild(this.bug);
+				this.bug.on("click", this.goodBugHit.bind(this));
 
-			var iDelay = 6000 / (1 + this._iDifficulty / 4);
-			createjs.Tween.get(this.lastBug).to({scaleY: 1, y: bugsY[this.randomPos]}, 200).wait(iDelay).call(function(){
+				this.lastBug = this.bug;
+				this.lastBug.scaleY *= 0.4;
+				this.lastBug.y += 42 * this._iScaleFactor;
+
+				var iDelay = 6000 / (1 + this._iDifficulty / 4);
+				createjs.Tween.get(this.lastBug).to({
+					scaleY: 1 * this._iScaleFactor,
+					y: bugsY[this.randomPos] * this._iScaleFactor
+				}, 200).wait(iDelay).call(function () {
+					this.showGoodBug();
+				}.bind(this));
+			} else {
 				this.showGoodBug();
-			}.bind(this));
+			}
 		},
 
 		/**
