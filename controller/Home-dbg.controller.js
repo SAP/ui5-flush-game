@@ -81,11 +81,15 @@ sap.ui.define([
 					return;
 				}
 
+				// calculate new mood
 				var iMood = 100 - Math.max(0, iTotalScore) / 100;
 				this.getModel("appView").setProperty("/mood", iMood);
 
+				// check if coming from a level
 				var bFromGame = this.getModel("appView").getProperty("/fromGame");
+				this.getModel("appView").setProperty("/fromGame", false);
 
+				// score last game
 				if (bFromGame) {
 					if (iOldMood - iMood > 0) {
 						// unlock one more level
@@ -114,7 +118,6 @@ sap.ui.define([
 						this._bLockedAfterLevel = false;
 					}.bind(this), 3000);
 				} else {
-					this.getModel("appView").setProperty("/fromGame", false);
 					this._playStory("intro").then(fnPlayRandomQuotes);
 				}
 			}.bind(this));

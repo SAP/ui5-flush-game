@@ -217,7 +217,6 @@ html, body {
 	width: 100%;
 	border-radius: 10px;
 	background: #192633;
-	width: calc(100% - 2rem);
 }
 
 .flush .arcadeControls.sapUiHLayout > .sapUiHLayoutChildWrapper:not(:last-child) {
@@ -228,6 +227,11 @@ html, body {
 .sap-tablet .flush .arcadeControls.sapUiHLayout > .sapUiHLayoutChildWrapper:nth-child(2) {
 	width: calc(100% - 636px);
 	min-width: 200px;
+}
+
+.sap-desktop .flush .arcadeControls.multiPlayerControls.sapUiHLayout > .sapUiHLayoutChildWrapper:nth-child(2) {
+	width: calc(100% - 500px);
+	min-width: 520px;
 }
 
 .flush .instructionsLayout,
@@ -308,12 +312,14 @@ html, body {
 	margin-top: 1.25rem;
 }
 
-.sap-desktop .flush .arcadeControls {
+.sap-desktop .flush .arcadeControls,
+.sap-combi.sap-desktop .flush .arcadeControls{
 	margin-left: 1rem;
 	margin-right: 1rem;
 	padding: 1rem;
 	box-sizing: border-box;
 	min-width: 880px;
+	width: calc(100% - 2rem);
 }
 
 .sap-tablet .flush .arcadeControls,

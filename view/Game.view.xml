@@ -77,12 +77,6 @@
 					speaker="Render Manager"
 					image="RotRenderManagerDroht.png"
 					duration="5000" position="end center"/>
-				<game:MessageToastDeluxe
-					message="But don't hit your friends!"
-					speaker="Render Manager"
-					image="RotRenderManagerDroht.png"
-					duration="5000"
-					position="begin center"/>
 			</game:MessageToastStory>
 			<game:MessageToastStory id="Uncontrollable">
 				<game:MessageToastDeluxe message="" duration="2000"/>

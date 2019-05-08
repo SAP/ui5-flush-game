@@ -145,7 +145,7 @@ sap.ui.define([
 				if (this.getPosition().split(" ").pop() === "bottom") {
 					iBottom /= 2;
 				}
-				oImage.style.left = ((oImage.width || aFallbackSize[0] - this._MESSAGETOAST_WIDTH) / - 2) + "px";
+				oImage.style.left = ((oImage.width || aFallbackSize[0]) / - 2) + "px";
 				oImage.style.bottom = iBottom + "px";
 			}
 
@@ -158,7 +158,9 @@ sap.ui.define([
 		 */
 		_sneakInNumber: function () {
 			var aToastCollection = document.getElementsByClassName("sapMMessageToast"),
-				oOrdinaryToast = aToastCollection.item(aToastCollection.length - 1);
+				oOrdinaryToast = aToastCollection.item(aToastCollection.length - 1),
+				aFallbackSize = this._getFallbackSize(this.getImage()),
+				oImage = oOrdinaryToast.getElementsByTagName("img")[0];
 
 			var oNumber = document.createElement("span");
 			oNumber.classList.add('messageToastDeluxeNumber');
@@ -167,7 +169,7 @@ sap.ui.define([
 			}
 			oNumber.appendChild(document.createTextNode(this.getNumber()));
 
-			oNumber.style.left = -100 + "px";
+			oNumber.style.left = ((oImage.width || aFallbackSize[0]) / - 2) + "px";
 			oNumber.style.bottom = -30 - this._HEADER_HEIGHT + "px";
 
 			oOrdinaryToast.appendChild(oNumber);
@@ -251,7 +253,7 @@ sap.ui.define([
 						if (aPosition[0] === "begin") {
 							aPosition[0] = iDistanceToScreen;
 						} else if (aPosition[0] === "center") {
-							aPosition[0] = Device.resize.width / 2  - this._MESSAGETOAST_WIDTH / 2;
+							aPosition[0] = Device.resize.width / 2  - (this.getMessage() ? this._MESSAGETOAST_WIDTH / 2 : 0);
 						} else if (aPosition[0] === "end") {
 							aPosition[0] = Device.resize.width - this._MESSAGETOAST_WIDTH - iDistanceToScreen;
 						} else {

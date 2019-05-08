@@ -544,6 +544,11 @@ sap.ui.define([
 					this._oLevel = new Level(this, aCanvas, oController.byId("controlManager"));
 					this._oLevel.setDifficulty(iDifficulty);
 					this._oLevel.init().then(function () {
+						// show start message after 1s
+						setTimeout(function () {
+							this.triggerEvent("start");
+						}.bind(this), 1000);
+
 						// set up multiplayer mode
 						if (this.getProperty("level").match(/multi/i)) {
 							this._initMultiPlayer();
