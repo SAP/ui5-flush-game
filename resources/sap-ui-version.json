@@ -1,31 +1,31 @@
 {
 	"name": "ui5-flush-game",
 	"version": "0.1.0",
-	"buildTimestamp": 1557330077435,
+	"buildTimestamp": 1557339264823,
 	"scmRevision": "",
 	"libraries": [
 		{
-			"name": "sap.ui.layout",
+			"name": "sap.ui.unified",
 			"version": "1.65.1",
-			"buildTimestamp": 1557330077435,
+			"buildTimestamp": 1557339264823,
 			"scmRevision": ""
 		},
 		{
 			"name": "sap.ui.core",
 			"version": "1.65.1",
-			"buildTimestamp": 1557330077435,
-			"scmRevision": ""
-		},
-		{
-			"name": "sap.ui.unified",
-			"version": "1.65.1",
-			"buildTimestamp": 1557330077435,
+			"buildTimestamp": 1557339264823,
 			"scmRevision": ""
 		},
 		{
 			"name": "sap.m",
 			"version": "1.65.1",
-			"buildTimestamp": 1557330077435,
+			"buildTimestamp": 1557339264823,
+			"scmRevision": ""
+		},
+		{
+			"name": "sap.ui.layout",
+			"version": "1.65.1",
+			"buildTimestamp": 1557339264823,
 			"scmRevision": ""
 		}
 	]
