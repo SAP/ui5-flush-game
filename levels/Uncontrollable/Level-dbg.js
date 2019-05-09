@@ -499,7 +499,7 @@ sap.ui.define([
 			if (objSkin.gameObjectType === gameObjectTypes.CONTROL) {
 				var iEvilFactor = 2 * _iDifficulty / 10;
 				var iRandomFactor = Math.random() * iEvilFactor + 1.5;
-				body.ApplyImpulse(new b2Vec2(-4 * body.m_mass * iRandomFactor, -4.3 * body.m_mass * iRandomFactor * 0.6 * MOBILE_SCALE), body.GetPosition()); // impulse, position
+				body.ApplyImpulse(new b2Vec2(-4 * body.m_mass * iRandomFactor * MOBILE_SCALE, -4.3 * body.m_mass * iRandomFactor * 0.6 * MOBILE_SCALE * MOBILE_SCALE), body.GetPosition()); // impulse, position
 			}
 
 			// assign actor
@@ -640,6 +640,13 @@ sap.ui.define([
 					var aControls = this._oControlManager.getContent();
 					var oControl = aControls[Math.floor(Math.abs(Math.random()) * aControls.length)];
 
+					if (Device.system.phone) {
+						// skip large calendar control and reduce the amount of large tiles on phone
+						while (oControl.getMetadata().getName() === "sap.ui.unified.Calendar"  || oControl.getMetadata().getName() === "sap.m.GenericTile" && Math.random() * 2 < 1.3) {
+							oControl = aControls[Math.floor(Math.abs(Math.random()) * aControls.length)];
+						}
+					}
+
 					_oGame.getSoundManager().play("Controlshot");
 
 					// Let the renderManager throw controls
@@ -652,7 +659,7 @@ sap.ui.define([
 						scaleX: MOBILE_SCALE,
 						scaleY: MOBILE_SCALE,
 						x: canvasWidth,
-						y: canvasHeight - 300,
+						y: canvasHeight - (Device.system.phone ? 200 : 300),
 						snapToPixel: true,
 						mouseEnabled: false,
 						density: 1,
