@@ -261,6 +261,8 @@ sap.ui.define([
 							aPosition[0] = Device.resize.width - this._MESSAGETOAST_WIDTH - iDistanceToScreen;
 						} else {
 							aPosition[0] = parseInt(aPosition[0]);
+							// add letterboxing offset
+							aPosition[0] += document.getElementsByClassName("game")[0].getClientRects()[0].left;
 						}
 						if (aPosition[1] === "top") {
 							aPosition[1] = 0;
