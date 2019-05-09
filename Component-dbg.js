@@ -52,11 +52,20 @@ sap.ui.define([
 		},
 
 		onAfterRendering: function () {
+			function fnHideLoadingScreen() {
+				var oApp = document.getElementsByClassName("flush sapMApp")[0];
+
+				// avoid flickering due to slow rendering on mobile devices
+				var bVisible = oApp.offsetWidth > 0 && oApp.offsetHeight > 0;
+				if (bVisible) {
+					document.getElementsByClassName("loading")[0].style.display = 'none';
+				} else {
+					setTimeout(fnHideLoadingScreen, 200);
+				}
+			}
 			// hide loading layer after app view is rendered
 			this.getRootControl().addEventDelegate({
-				onAfterRendering: function () {
-					document.getElementsByClassName("loading")[0].style.display = 'none';
-				}
+				onAfterRendering: fnHideLoadingScreen
 			})
 		},
 
