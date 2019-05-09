@@ -32,6 +32,7 @@ sap.ui.define([
 	var MOUSE_FREQUENCY = 30;
 	var TOUCH_FREQUENCY = 60;
 	var VERTICAL_LIMIT = 6;
+	var MOBILE_SCALE = (Device.system.phone ? 0.7 : 1);
 
 	var _fnInitResolve;
 
@@ -448,12 +449,12 @@ sap.ui.define([
 
 			var bodyDef = new b2BodyDef();
 
-			if (objSkin.shapeType == shapeTypes.POLYGON) {
+			if (objSkin.shapeType === shapeTypes.POLYGON) {
 				fixture.shape = new b2PolygonShape();
-				if (objSkin.gameObjectType == gameObjectTypes.PLAYER) {
+				if (objSkin.gameObjectType === gameObjectTypes.PLAYER) {
 					fixture.shape.SetAsBox(objSkin.width / SCALE / 2, (objSkin.height - 30) / SCALE / 2);
 				} else {
-					fixture.shape.SetAsBox(objSkin.width / SCALE / 2, (objSkin.height) / SCALE / 2);
+					fixture.shape.SetAsBox(objSkin.width * MOBILE_SCALE / SCALE / 2, objSkin.height * MOBILE_SCALE / SCALE / 2);
 				}
 				bodyDef.position.x = (objSkin.x + (objSkin.width / 2)) / SCALE; // (0/0) im Canvas
 				bodyDef.position.y = (objSkin.y + (objSkin.height / 2)) / SCALE; // (0/0) im Canvas
@@ -476,13 +477,13 @@ sap.ui.define([
 			var body = box2dWorld.CreateBody(bodyDef);
 			body.skin = objSkin;
 
-			if (objSkin.gameObjectType == gameObjectTypes.PLAYER) {
+			if (objSkin.gameObjectType === gameObjectTypes.PLAYER) {
 				_playerBody = body;
 				// MG: repair broken game - still relies on the globals
 				playerBody = _playerBody;
 			}
 
-			if (objSkin.gameObjectType == gameObjectTypes.PLAYER) {
+			if (objSkin.gameObjectType === gameObjectTypes.PLAYER) {
 				var fixtureBottom = new b2FixtureDef();
 				fixtureBottom.density = objSkin.density; // Dichte
 				fixtureBottom.restitution = 0.1;
@@ -495,17 +496,17 @@ sap.ui.define([
 			var fixtureReturn = body.CreateFixture(fixture);
 			fixtureReturn.skin = objSkin;
 
-			if (objSkin.gameObjectType == gameObjectTypes.CONTROL) {
+			if (objSkin.gameObjectType === gameObjectTypes.CONTROL) {
 				var iEvilFactor = 2 * _iDifficulty / 10;
 				var iRandomFactor = Math.random() * iEvilFactor + 1.5;
-				body.ApplyImpulse(new b2Vec2(-4 * body.m_mass * iRandomFactor, -4.3 * body.m_mass * iRandomFactor * 0.6), body.GetPosition()); // impulse, position
+				body.ApplyImpulse(new b2Vec2(-4 * body.m_mass * iRandomFactor, -4.3 * body.m_mass * iRandomFactor * 0.6 * MOBILE_SCALE), body.GetPosition()); // impulse, position
 			}
 
 			// assign actor
 			var actor = new actorObject(body, objSkin);
 			body.SetUserData(actor); // set the actor as user data of the body so we can use it later: body.GetUserData()
 
-			if (objSkin.gameObjectType == gameObjectTypes.CONTROL || objSkin.assetId === "ALVTable") {
+			if (objSkin.gameObjectType === gameObjectTypes.CONTROL || objSkin.assetId === "ALVTable") {
 				controls.push(body);
 			} else {
 				longlifeGameObjects.push(body);
@@ -648,6 +649,8 @@ sap.ui.define([
 						control: oControl,
 						width: oControl._image.width,
 						height: oControl._image.height,
+						scaleX: MOBILE_SCALE,
+						scaleY: MOBILE_SCALE,
 						x: canvasWidth,
 						y: canvasHeight - 300,
 						snapToPixel: true,
@@ -701,6 +704,8 @@ sap.ui.define([
 				shapeType: shapeTypes.POLYGON,
 				width: 500,
 				height: 373,
+				scaleX: MOBILE_SCALE,
+				scaleY: MOBILE_SCALE,
 				x: playerBody.GetPosition().x * SCALE - 250,
 				y: (canvasHeight - 800),
 				snapToPixel: true,
