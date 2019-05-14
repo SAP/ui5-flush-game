@@ -56,7 +56,7 @@ sap.ui.define([
 				var oApp = document.getElementsByClassName("flush sapMApp")[0];
 
 				// avoid flickering due to slow rendering on mobile devices
-				var bVisible = oApp.offsetWidth > 0 && oApp.offsetHeight > 0;
+				var bVisible = oApp && oApp.offsetWidth > 0 && oApp.offsetHeight > 0;
 				if (bVisible) {
 					document.getElementsByClassName("loading")[0].style.display = 'none';
 				} else {
