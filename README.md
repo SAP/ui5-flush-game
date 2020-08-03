@@ -31,7 +31,9 @@ To report a bug, please open an issue.
 
 ## Contributing
 
-We welcome your contributions. Please get in touch with us in the [#flush](https://openui5.slack.com/messages/CHV1YCNG6) channel of the [OpenUI5 Community Slack](https://ui5-slack-invite.cfapps.eu10.hana.ondemand.com/).
+We welcome your contributions. For small fixes and improvements simply create a Pull Request in this repository. For larger changes, please first get in touch with us in the [#flush](https://openui5.slack.com/messages/CHV1YCNG6) channel of the [OpenUI5 Community Slack](https://ui5-slack-invite.cfapps.eu10.hana.ondemand.com/). 
+
+Due to legal reasons, contributors will be asked to accept a DCO before they submit the first pull request to this projects, this happens in an automated fashion during the submission process. SAP uses [the standard DCO text of the Linux Foundation](https://developercertificate.org/).
 
 ## Download and Installation
 
