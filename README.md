@@ -21,7 +21,6 @@ Flush! is an innovation project that brings together Web app capabilities of Ope
 * [CreateJS](https://createjs.com/) (canvas rendering, sound, animations)
 * [Box2D](https://box2d.org/) (physics)
 * [dom-to-image](https://github.com/tsayen/dom-to-image) (UI5 control to canvas mapping)
-* [Animate.css](https://daneden.github.io/animate.css/) (CSS effects)
 
 We leverage the enterprise-grade UI5 technology with custom controls, custom theming, sprite effects, game mechanics, and scripted levels to create a unique browser game.
 
