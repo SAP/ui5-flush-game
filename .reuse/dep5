@@ -1,0 +1,192 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: ui5-flush-game
+Upstream-Contact: SAP OpenUI5 <openui5@sap.com>
+Source: https://github.com/SAP/ui5-flush-game
+Disclaimer: The code in this project may include calls to APIs (“API Calls”) of
+ SAP or third-party products or services developed outside of this project
+ (“External Products”).
+ “APIs” means application programming interfaces, as well as their respective
+ specifications and implementing code that allows software to communicate with
+ other software.
+ API Calls to External Products are not licensed under the open source license
+ that governs this project. The use of such API Calls and related External
+ Products are subject to applicable additional agreements with the relevant
+ provider of the External Products. In no event shall the open source license
+ that governs this project grant any rights in or to any External Products,or
+ alter, expand or supersede any terms of the applicable additional agreements.
+ If you have a valid license agreement with SAP for the use of a particular SAP
+ External Product, then you may make use of any API Calls included in this
+ project’s code for that SAP External Product, subject to the terms of such
+ license agreement. If you do not have a valid license agreement for the use of
+ a particular SAP External Product, then you may only make use of any API Calls
+ in this project for that SAP External Product for your internal, non-productive
+ and non-commercial test and evaluation of such API Calls. Nothing herein grants
+ you any rights to use or access any SAP External Product, or provide any third
+ parties the right to use of access any SAP External Product, through API Calls.
+
+Files: *
+Copyright: 2018-2019 SAP SE or an SAP affiliate company and ui5-flush-game contributors
+License: Apache-2.0
+
+
+# thirdparty software
+
+Files: webapp/thirdparty/Box2D.js
+Copyright: 2006-2007 Erin Catto
+License: Zlib
+
+Files: webapp/thirdparty/createjs.min.js webapp/thirdparty/balls.js
+Copyright: 2011-2015 gskinner.com, inc.
+License: MIT
+
+Files: webapp/thirdparty/dom-to-image.min.js
+Copyright: 2015 Anatolii Saienko, 2012 Paul Bakaus
+License: MIT
+
+
+# sound files
+
+Files: webapp/sounds/344445__reidedo__ram-mouth-hawk-rev-v1.mp3
+Copyright: 2016 by reidedo (https://freesound.org/people/reidedo/)
+Comment: original sound file: RAM_Mouth Hawk_rev_v1.wav (https://freesound.org/people/reidedo/sounds/344445/)
+License: CC-BY-3.0
+
+Files: webapp/sounds/243020__plasterbrain__game-start.mp3
+Copyright: 2014 by plasterbrain (https://freesound.org/people/plasterbrain/)
+Comment: original sound file: Game Start (https://freesound.org/people/plasterbrain/sounds/243020/)
+License: CC0-1.0
+
+Files: webapp/sounds/344310__musiclegends__laser-shoot.mp3
+Copyright: 2016 by MusicLegends (https://freesound.org/people/MusicLegends/)
+Comment: original sound file: Laser shoot (https://freesound.org/people/MusicLegends/sounds/344310/)
+License: CC-BY-3.0
+
+Files: webapp/sounds/badHit.mp3
+Copyright: 2017 by stumpbutt (https://freesound.org/people/stumpbutt/)
+Comment: original sound file: retro explosion sfx.wav (https://freesound.org/people/stumpbutt/sounds/381686/)
+License: CC-BY-NC-3.0
+
+Files: webapp/sounds/sounds_multiplayer/laser_hits_robot.mp3 
+Copyright: 2017 by stumpbutt (https://freesound.org/people/stumpbutt/)
+Comment: original sound file: retro explosion sfx.wav (https://freesound.org/people/stumpbutt/sounds/381686/)
+License: CC-BY-NC-3.0 
+
+Files: webapp/sounds/beep_loose.mp3
+Copyright: 2016 by cabled_mess (https://freesound.org/people/cabled_mess/)
+Comment: original sound file: Lose_Funny_Retro_Video Game (https://freesound.org/people/cabled_mess/sounds/371451/)
+License: CC0-1.0
+
+Files: webapp/sounds/beep_win.mp3
+Copyright: 2016 by LittleRainySeasons (https://freesound.org/people/LittleRainySeasons/)
+Comment: original sound file: good_end.mp3 (https://freesound.org/people/LittleRainySeasons/sounds/342218/)
+License: CC0-1.0
+
+Files: webapp/sounds/game_over2.mp3 
+Copyright: 2016 by Rocotilos (https://freesound.org/people/Rocotilos/)
+Comment: original sound file: 8-bit "Game Over" (https://freesound.org/people/Rocotilos/sounds/339837/)
+License: CC0-1.0
+
+Files: webapp/sounds/goodHit.mp3
+Copyright: 2016 by original_sound (https://freesound.org/people/original_sound/)
+Comment: original sound file: Confirmation Common (https://freesound.org/people/original_sound/sounds/366108/)
+License: CC-BY-3.0
+
+Files: webapp/sounds/hammer.mp3
+Copyright: 2010 by tec_studio (https://freesound.org/people/tec_studio/)
+Comment: original sound file: hamr_BoxTom.wav (https://freesound.org/people/tec_studio/sounds/106861/)
+License: CC0-1.0
+
+Files: webapp/sounds/sounds_multiplayer/Lasershot.mp3
+Copyright: 2013 by soundslikewillem (https://freesound.org/people/soundslikewillem/)
+Comment: original sound file: Laser gun (https://freesound.org/people/soundslikewillem/sounds/190707/)
+License: CC-BY-NC-3.0
+
+Files: webapp/sounds/Raketenduese.mp3
+Copyright: 2016 by InspectorJ (https://freesound.org/people/InspectorJ/)
+Comment: original sound file: White Noise, Low Colour, A.wav (https://freesound.org/people/InspectorJ/sounds/361528/)
+License: CC-BY-3.0
+
+Files: webapp/sounds/RenderManagerGrowl.mp3
+Copyright: 2014 by cylon8472 (https://freesound.org/people/cylon8472/)
+Comment: original sound file: Cthulhu growl.wav (https://freesound.org/people/cylon8472/sounds/249686/)
+License: CC-BY-3.0
+
+Files: webapp/sounds/RenderManagerLachtTeuflisch.mp3
+Copyright: 2016 by newagesoup (https://freesound.org/people/newagesoup/)
+Comment: original sound file: monster-laugh (https://freesound.org/people/newagesoup/sounds/337164/)
+License: CC0-1.0
+
+Files: webapp/sounds/robovoice_loose.mp3
+Copyright: 2016 by Rocotilos (https://freesound.org/people/Rocotilos/)
+Comment: original sound file: 8-bit "You Lose" (https://freesound.org/people/Rocotilos/sounds/339835/)
+License: CC0-1.0
+
+Files: webapp/sounds/robovoice_start.mp3
+Copyright: 2016 by Rocotilos (https://freesound.org/people/Rocotilos/)
+Comment: original sound file: 8-bit "Start" (https://freesound.org/people/Rocotilos/sounds/339836/)
+License: CC0-1.0
+
+Files: webapp/sounds/robovoice_win.mp3
+Copyright: 2016 by Rocotilos (https://freesound.org/people/Rocotilos/)
+Comment: original sound file: 8-bit "You Win" (https://freesound.org/people/Rocotilos/sounds/339834/)
+License: CC0-1.0
+
+Files: webapp/sounds/start_any_gamelevel.mp3
+Copyright: 2014 by Kodack (https://freesound.org/people/Kodack/)
+Comment: original sound file: Arcade Bleep Sound (https://freesound.org/people/Rocotilos/sounds/339834/)
+License: CC0-1.0
+
+Files: webapp/sounds/Windpfeifen.mp3
+Copyright: 2009 by Benboncan (https://freesound.org/people/Benboncan/)
+Comment: original sound file: Wind On Door Short.wav (https://freesound.org/people/zimbot/sounds/209984/)
+License: CC-BY-3.0
+
+Files: webapp/sounds/sounds_multiplayer/Bomb.mp3
+Copyright: 2013 by zimbot (https://freesound.org/people/zimbot/)
+Comment: original sound file: ExplosionBombBlastAmbientE.wav (https://freesound.org/people/zimbot/sounds/209984/)
+License: CC-BY-3.0
+
+Files: webapp/sounds/sounds_multiplayer/LoadControlGun.mp3
+Copyright: 2013 by 18hiltc (https://freesound.org/people/18hiltc/)
+Comment: original sound file: Alien Bomb Timer.wav (https://freesound.org/people/18hiltc/sounds/208532/)
+License: CC-BY-3.0
+
+Files: webapp/sounds/sounds_multiplayer/controls_collision.mp3
+Copyright: 2005 by NoiseCollector (https://freesound.org/people/NoiseCollector/)
+Comment: original sound file: PongBlipF4.wav (https://freesound.org/people/NoiseCollector/sounds/4359/)
+License: CC-BY-3.0
+
+Files: webapp/sounds/sounds_multiplayer/Controlshot.mp3
+Copyright: 2012 by dreeke (https://freesound.org/people/dreeke/)
+Comment: original sound file: champaign cork.mp3 (https://freesound.org/people/dreeke/sounds/140705/)
+License: CC-BY-NC-3.0 
+
+Files: webapp/sounds/sounds_multiplayer/cork.mp3
+Copyright: 2006 by Traveler (https://freesound.org/people/Traveler/)
+Comment: original sound file: Cork3.aif (https://freesound.org/people/Traveler/sounds/16064/)
+License: CC-BY-3.0
+
+Files: webapp/sounds/sounds_multiplayer/laser_hits_control.mp3
+Copyright: 2014 by coby12388 (https://freesound.org/people/coby12388/)
+Comment: original sound file: BombHit01.wav (https://freesound.org/people/coby12388/sounds/222575/)
+License: CC-BY-3.0
+
+Files: webapp/sounds/sounds_multiplayer/Vogelgezwitscher.mp3
+Copyright: 2014 by PLukx (https://freesound.org/people/PLukx/)
+Comment: original sound file: FX_bird_water_whistle.wav (https://freesound.org/people/PLukx/sounds/254209/)
+License: CC0-1.0
+
+Files: webapp/sounds/RenderManagerVomBlitzGetroffenDonner.mp3
+Copyright: 2017 by bajko (https://freesound.org/people/bajko/)
+Comment: original sound file: sfx_thunder blast.wav (https://freesound.org/people/bajko/sounds/399656/)
+License: CC0-1.0
+
+Files: webapp/sounds/Musik_Tristan.mp3
+Copyright: 2015 by Tristan_Lohengrin (https://freesound.org/people/Tristan_Lohengrin/)
+Comment: original sound file: 8bit Introduction (https://freesound.org/people/Tristan_Lohengrin/sounds/399656/)
+License: CC-BY-3.0
+
+Files: webapp/sounds/Jingle_Bells_3.mp3
+Copyright: 2007 by Kevin MacLeod (https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100187)
+Comment: original sound file: Jingle Bells.mp3 (https://incompetech.com/music/royalty-free/mp3-royaltyfree/Jingle%20Bells.mp3)
+License: CC-BY-3.0
