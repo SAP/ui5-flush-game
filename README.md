@@ -2,6 +2,8 @@
 
 # Flush! Defeat the Evil Render Manager
 
+[![REUSE status](https://api.reuse.software/badge/github.com/SAP/ui5-flush-game)](https://api.reuse.software/info/github.com/SAP/ui5-flush-game)
+
 An innovative and fun game combining [OpenUI5](https://github.com/SAP/openui5) and [CreateJS](https://createjs.com/) to showcase real-time and interaction capabilities of UI5 technology. Browse the source code to look behind the scenes or play the game to see Flush! in action.
 
 **[Play Flush Online!](http://sap.github.io/ui5-flush-game)**
