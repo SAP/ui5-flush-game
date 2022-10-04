@@ -13,8 +13,8 @@
     "@openui5/themelib_sap_belize": "^1"
   },
   "devDependencies": {
-    "@ui5/cli": "^1.0.0",
-    "eslint": "^4.19.1"
+    "@ui5/cli": "^2.14.11",
+    "eslint": "^8.24.0"
   },
   "repository": {
     "type": "git",

@@ -57,7 +57,7 @@ The following media assets and thirdparty libraries were used in this project:
 
 ## License
 
-Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+Copyright (c) 2022 SAP SE or an SAP affiliate company. All rights reserved.
 This file is licensed under the Apache Software License, v.2 except as noted otherwise in the [LICENSE](/LICENSE) file.
 
 Have fun playing the game!
