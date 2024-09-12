@@ -7,13 +7,13 @@
     "start": "ui5 serve --open index.html"
   },
   "dependencies": {
-    "@openui5/sap.m": "^1",
-    "@openui5/sap.ui.core": "^1",
-    "@openui5/sap.ui.layout": "^1",
-    "@openui5/themelib_sap_belize": "^1"
+    "@openui5/sap.m": "^1.71",
+    "@openui5/sap.ui.core": "^1.71",
+    "@openui5/sap.ui.layout": "^1.71",
+    "@openui5/themelib_sap_belize": "^1.71"
   },
   "devDependencies": {
-    "@ui5/cli": "^2.14.11",
+    "@ui5/cli": "^4",
     "eslint": "^8.24.0"
   },
   "repository": {
@@ -22,5 +22,5 @@
   },
   "keywords": [],
   "author": "",
-  "license": "Apache-2"
+  "license": "Apache-2.0"
 }
