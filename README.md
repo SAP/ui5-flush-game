@@ -1,3 +1,11 @@
+## Deprecation Notice
+
+This public repository is no longer maintained.
+
+![](https://img.shields.io/badge/STATUS-NOT%20CURRENTLY%20MAINTAINED-red.svg?longCache=true&style=flat)
+
+---
+
 ![Flush! Manual](media/header.jpg)
 
 # Flush! Defeat the Evil Render Manager
